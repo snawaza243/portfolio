@@ -1,0 +1,597 @@
+<!Doctype html>
+<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
+  <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="author" content="Shahnawaz Alam">
+  <meta name="description" content="I am ('Shahnawaz Alam') is a web developer specializing in building responsive and user-friendly web application using latest technology. Visit codesam.in to view his portfolio and learn more.">
+  <meta name="keywords" content="Shahnawaz Alam, web development, portfolio, HTML, CSS, JavaScript, ReactJS, bootstrap, StyledComponent, MongoDB, MySQL">
+
+  <link rel=preload href="font/Agustina.woff" as="font" type="font/woff" crossorigin>
+  <link rel="icon" type="image/x-icon" href="images/faveicon.ico">
+
+  <link rel="stylesheet" type="text/css" href="./font/agustina-cufonfonts-webfont/style.css"/>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/unicons.css">
+  <link rel="stylesheet" href="css/owl.carousel.min.css">
+  <link rel="stylesheet" href="css/owl.theme.default.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/FortAwesome/Font-Awesome@5.15.4/css/all.min.css">
+
+  <!-- MAIN STYLE -->
+  <link rel="stylesheet" href="css/main-style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,400;1,100;1,200;1,300&family=Source+Code+Pro:ital,wght@0,300;0,400;0,500;1,400&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script type="text/javascript">
+    (function () {
+
+      // mail pub id
+      emailjs.init('ozGICExR3o9WZs7vJ');
+    })();
+  </script>
+  <script type="text/javascript">
+    window.onload = function () {
+      document.getElementById('contact-form').addEventListener('submit', function (event) {
+        event.preventDefault();
+        // generate a five digit number for the contact_number variable
+        this.contact_number.value = Math.random() * 100000 | 0;
+        // service id mail temp id
+        emailjs.sendForm('service_cpbg9r8', 'template_obk6mqk', this)
+          .then(function () {
+            console.log('Message sent!');
+            alert("\"Thank you for contacting us!\"");
+
+            const user_name = document.getElementById('user_name');
+            const email = document.getElementById('email');
+            const country = document.getElementById('country');
+            const phone = document.getElementById('phone');
+            const message = document.getElementById('message');
+
+            // Send value to server 
+
+            // 👇️ clear input field 
+            user_name.value = '';
+            email.value = '';
+            country.value = '';
+            phone.value = '';
+            message.value = '';
+            console.log('Clear form')
+
+          }, function (error) {
+
+            console.log('FAILED...', error);
+            alert('Kindly fill the form correctly', error);
+
+          });
+      });
+    }
+  </script>
+
+
+<script src="https://kit.fontawesome.com/83a464020b.js" crossorigin="anonymous"></script>
+
+  <title>Portfolio</title>
+</head>
+
+<body>
+
+
+  <!-- MENU -->
+  <nav class="navbar navbar-expand-sm navbar-light">
+    <div class="container">
+      <a class="navbar-brand" href="www.codesam.in">
+      <!-- <i class='uil uil-graduation-hat'  -->
+      <i class='' 
+
+      style="font-family:'Agustina Regular';font-weight:bold;">
+      Shahnawaz Alam
+        </i>
+      
+      </a>
+
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        <span class="navbar-toggler-icon"></span>
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item">
+            <a href="#about" class="nav-link"><span data-hover="About">About</span></a>
+          </li>
+          <li class="nav-item">
+            <a href="#education-section" class="nav-link"><span data-hover="Education">Education</span></a>
+          </li>
+          <li class="nav-item">
+            <a href="#project" class="nav-link"><span data-hover="Projects">Projects</span></a>
+          </li>
+
+          <li class="nav-item">
+            <a href="#contact" class="nav-link"><span data-hover="Contact">Contact</span></a>
+          </li>
+        </ul>
+
+        <ul class="navbar-nav ml-lg-auto">
+          <div class="ml-lg-4">
+            <div class="color-mode d-lg-flex justify-content-center align-items-center">
+              <i class="color-mode-icon"></i>
+              <!-- Day / Night -->
+            </div>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ABOUT -->
+  <section class="about full-screen d-lg-flex justify-content-center align-items-center" id="about">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-7 col-md-12 col-12 d-flex align-items-center headIntro">
+          <div class="about-text">
+            <small class="small-text">Welcome to <span class="mobile-block">my portfolio website!</span></small>
+            <h1 class="animated animated-text">
+              <span class="mr-2">Hey folks, I'm</span>
+              <div class="animated-info">
+                <span class="animated-item">Developer</span>
+                <span class="animated-item">Designer</span>
+                <span class="animated-item">Freelancer</span>
+              </div>
+            </h1>
+            <p>A full stack web developer with the craziest hobby to learn the new technology and feel good to share
+              the experience with others.</p>
+            <div class="custom-btn-group mt-4">
+              <a href="https://snawaza243.hackerresume.io/bd7bcbca-8cd8-4e16-80ad-aba970cb8356"
+                class="btn mr-lg-2 custom-btn" target="_blank"><i class='uil uil-file-alt'></i> Download Resume</a>
+              <a href="#contact" class="btn custom-btn custom-btn-bg custom-btn-link">Contact me</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-5 col-md-12 col-12">
+          <div class="about-image svg">
+            <!-- <img src="images/undraw/undraw_software_engineer_lvl5.svg" class="img-fluid" alt="svg image"> -->
+            <img src="images/coder.svg" class="img-fluid" alt="svg image">
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS UI-->
+  <section class="project py-5" id="project">
+    <div class="container">
+
+      <div class="row">
+        <div class="col-lg-11 text-center mx-auto col-12">
+
+          <div class="col-lg-8 mx-auto">
+            <h2>Explore The Projects Overview UI</h2>
+          </div>
+          <div class="owl-carousel owl-theme">
+            <div class="item">
+              <div class="project-info">
+                <img src="images/project/project-image006.png" class="img-fluid" alt="project image">
+              </div>
+            </div>
+
+            <div class="item">
+              <div class="project-info">
+                <img src="images/project/project-image005.png" class="img-fluid" alt="project image">
+              </div>
+            </div>
+
+            <div class="item">
+              <div class="project-info">
+                <img src="images/project/project-image003.png" class="img-fluid" alt="project image">
+              </div>
+            </div>
+
+            <div class="item">
+              <div class="project-info">
+                <img src="images/project/project-image004.png" class="img-fluid" alt="project image">
+              </div>
+            </div>
+
+            <div class="item">
+              <div class="project-info">
+                <img src="images/project/project-image002.png" class="img-fluid" alt="project image">
+              </div>
+            </div>
+
+            <div class="item">
+              <div class="project-info">
+                <img src="images/project/project-image001.png" class="img-fluid" alt="project image">
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education, Projects -->
+  <section class="resume py-5 d-lg-flex justify-content-center align-items-center" id="resume">
+    <div class="container">
+      <div class="row">
+
+        <!-- Education -->
+        <div class="col-lg-6 col-12">
+          <h2 class="mb-4 mobile-mt-2" id="education-section">Education</h2>
+          <div class="timeline">
+            <div class="timeline-wrapper">
+              <div class="timeline-yr">
+                <span>2024</span>
+              </div>
+              <div class="timeline-info">
+                <h3><span>Bachelor of Technology</span><small>CSE</small></h3>
+                <p>Maharishi Markandeshwar Deemed to be University, Mullana,<br>Ambala (Haryana)
+                </p>
+              </div>
+            </div>
+
+            <div class="timeline-wrapper">
+              <div class="timeline-yr">
+                <span>2019</span>
+              </div>
+              <div class="timeline-info">
+                <h3><span>Intermediate</span><small>PCM</small></h3>
+                <p>Premchand High School Cum Inter Collage Sarari, <br>Siwan (Bihar)</p>
+                <p>BSEB Patna</p>
+              </div>
+            </div>
+
+            <div class="timeline-wrapper">
+              <div class="timeline-yr">
+                <span>2017</span>
+              </div>
+              <div class="timeline-info">
+                <h3><span>Matriculation</span><small>General</small></h3>
+                <p>Premchand High School Cum Inter Collage Sarari, <br> Siwan (Bihar)</p>
+                <p>BSEB Patna</p>
+
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- Tech -->
+          <div>
+            <h2>Skills</h2>
+
+            <style>
+              .tech-icon li a i{
+                font-size: 45px; padding: 5px;
+                align-items: center;
+                justify-content: center;
+                margin: 10px;
+              }
+
+              .grid-container{
+                display: grid;
+                justify-content: space-between;
+                grid-template-columns: 130px 130px 130px auto;
+                padding: 10px;
+              }
+              
+              .grid-container li a{
+                width: 150px !important;
+                padding: 40px;
+                font-size: 30px;
+                text-align: center;
+                justify-content: space-between;
+  
+              }
+
+            </style>
+            <ul id="skills" class="grid-container social-links  tech-icon justify-content-center">
+              <li><a title="HTML"><i class="fab fa-html5"></i></a></li>
+              <li><a title="CSS"><i class="fab fa-css3"></i></a></li>
+              <li><a title="JavaScript"><i class="fab fa-js"></i></a></li>
+              <li><a title="Bootstrap"><i class="fab fa-bootstrap"></i></a></li>
+              
+              <li><a title="SASS"><i class="fab fa-sass"></i></a></li>
+              <li><a title="React"><i class="fab fa-react"></i></a></li>
+              <li><a title="Node"><i class="fab fa-node-js"></i></a></li>
+              <li><a title="NPM"><i class="fab fa-npm"></i></a></li>
+              
+              <li><a title="Database: MySql, MongoDB"><i class="fa-solid fa-database"></i></a></li>
+              <li><a title="Firebase"><i class="fas fa-fire"></i></a></li>
+              <li><a title="Git"><i class="fab fa-git"></i></a></li>
+              
+              <li><a title="GitHub"><i class="fab fa-github"></i></a></li>
+              <li><a title="Docker"><i class="fab fa-docker"></i></a></li>
+
+              
+              
+              <li ><a title="C++"> 
+                <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 50 50" width="50px" height="50px" ><path d="M 43.910156 12.003906 L 27.070313 2.539063 C 25.792969 1.824219 24.207031 1.824219 22.929688 2.539063 L 6.089844 12.003906 C 4.800781 12.726563 4 14.082031 4 15.535156 L 4 34.464844 C 4 35.917969 4.800781 37.273438 6.089844 37.996094 L 22.929688 47.460938 C 23.570313 47.820313 24.285156 48 25 48 C 25.714844 48 26.429688 47.820313 27.070313 47.460938 L 43.910156 37.996094 C 45.199219 37.273438 46 35.917969 46 34.464844 L 46 15.535156 C 46 14.082031 45.199219 12.726563 43.910156 12.003906 Z M 25 37 C 18.382813 37 13 31.617188 13 25 C 13 18.382813 18.382813 13 25 13 C 28.78125 13 32.273438 14.753906 34.542969 17.742188 L 30.160156 20.277344 C 28.84375 18.835938 26.972656 18 25 18 C 21.140625 18 18 21.140625 18 25 C 18 28.859375 21.140625 32 25 32 C 26.972656 32 28.84375 31.164063 30.160156 29.722656 L 34.542969 32.257813 C 32.273438 35.246094 28.78125 37 25 37 Z M 37 26 L 35 26 L 35 28 L 33 28 L 33 26 L 31 26 L 31 24 L 33 24 L 33 22 L 35 22 L 35 24 L 37 24 Z M 44 26 L 42 26 L 42 28 L 40 28 L 40 26 L 38 26 L 38 24 L 40 24 L 40 22 L 42 22 L 42 24 L 44 24 Z"/></svg>
+              </a></li>
+              <li><a title="Python"><i class="fab fa-python"></i></a></li>
+              <li><a title="Java"><i class="fab fa-java"></i></a></li>
+              <li><a title="AWS"><i class="fab fa-aws"></i></a></li>
+              <li><a title="Blogger"><i class="fab fa-blogger"></i></a></li>
+              <li><a title="Android"><i class="fab fa-android"></i></a></li>
+              <li><a title="Windows"><i class="fab fa-windows"></i></a></li>
+
+
+
+              <li><a><i class="fab fa-#"></i></a></li>
+              <li><a><i class="fab fa-#"></i></a></li>
+              <li><a><i class="fab fa-#"></i></a></li>
+
+
+
+
+
+
+
+            </ul>
+
+          </div>
+        </div>
+
+
+        <!-- Projects -->
+        <div class="col-lg-6 col-12" id="project">
+          <h2 class="mb-4">Projects</h2>
+
+          <div class="timeline">
+
+            <!-- 2023 Hostel Bazaar -->
+            <div class="timeline-wrapper">
+              <div class="timeline-yr">
+                <span>2023</span>
+              </div>
+              <div class="timeline-info">
+                <h3><span>Hostel Bazaar</span><small>E-Commerce Web Application</small></h3>
+                <p>
+                  HostelBazaar connects students to buy and sell used and new items at campus within low prices.
+                  Students declutter, earn money while others find cheap goods to reuse - conveniently.
+
+                  <br><b>Tech: </b>ReactJS, StyledComponent, NodeJS, MongoDB
+                  <br><a href="https://github.com/snawaza243/hostelbazaar" target="_blank">Live</a>
+                  <a href="https://github.com/snawaza243/hostelbazaar" target="_blank">Source</a>
+                </p>
+              </div>
+            </div>
+
+            <!-- 2022 Todo, Blog, News, Netflix -->
+
+            <div class="timeline-wrapper">
+              <div class="timeline-yr">
+                <span>2022</span>
+              </div>
+              <div class="timeline-info">
+                <h3><span>WeboFlix</span><small>Video Streaming Web Application </small></h3>
+                <p>Sed fringilla vitae enim sit amet cursus. Sed cursus dictum tortor quis pharetra. Pellentesque
+                  habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+
+                  <br><b>Tech: </b>ReactJS, CSS, NodeJS, Firebase, Redux
+                  <br><a href="https://react-netflix-clone-214b6.web.app/" target="_blank">Live</a> <a
+                    href="https://github.com/snawaza243/react-netflix-clone" target="_blank">Source</a>
+                </p>
+              </div>
+            </div>
+
+
+            <div class="timeline-wrapper">
+              <div class="timeline-yr">
+                <span>2022</span>
+              </div>
+              <div class="timeline-info">
+                <div class="d-flex justify-content-between" style=" display: flex;
+                justify-content: space-between;">
+                  <h3><span>NewsFeed</span><small>News Website </small></h3>
+
+                </div>
+                <p>A Free News website That provide the top news of the day on the basis of different categories from
+                  the different countries.
+                  <br><b>Tech: </b>ReactJS, CSS, useEffect, NewsAPIs
+                  <br><a href=" https://github.com/snawaza243/news-feed.git" target="_blank">Live</a>
+                  <a href=" https://github.com/snawaza243/news-feed.git" target="_blank">Source</a>
+                </p>
+
+              </div>
+            </div>
+
+
+            <div class="timeline-wrapper">
+              <div class="timeline-yr">
+                <span>2022</span>
+              </div>
+              <div class="timeline-info">
+                <h3><span>Story Share</span><small>Blog Website </small></h3>
+                <p>Stories Sharing lets anyone instantly publish life stories for a global audience, celebrating the
+                  diversity of human experience through storytelling.
+
+                  <br><b>Tech: </b>ReactJS, CSS, NodeJS, MySQL
+                  <br><a href="https://snawaza243.github.io/story-share/" target="_blank">Live</a>
+                  <a href="https://github.com/snawaza243/story-share" target="_blank">Source</a>
+                </p>
+              </div>
+            </div>
+
+
+            <div class="timeline-wrapper">
+              <div class="timeline-yr">
+                <span>2022</span>
+              </div>
+              <div class="timeline-info">
+                <h3><span>Todo Application </span><small>Todo Web Application </small></h3>
+                <p>A advanced ToDo app that is able to make a list of your to do work. That can be update, delate and
+                  one more thing that can be stored locally that will visible only the system user.
+                  <br><b>Tech: </b>ReactJS, CSS, useEffect
+                  <br>
+                  <a href="https://snawaza243.github.io/react-todo-app/" target="_blank">Live</a>
+                  <a href=" https://github.com/snawaza243/react-todo-app" target="_blank">Source</a>
+                </p>
+
+              </div>
+            </div>
+
+
+            <!-- 2021 MediaPad -->
+            <div class="timeline-wrapper">
+              <div class="timeline-yr">
+                <span>2021</span>
+              </div>
+              <div class="timeline-info">
+                <h3><span>MediaPad<small>Desktop Application</small></h3>
+                <p>MediaPad is a desktop app with text-to-speech, speech-to-text, translation and note tools.
+
+                  <br><b>Tech: </b>Python, Tkinter, gTTs,
+                  <br><a href="https://github.com/snawaza243/MediaPad" target="_blank">Live</a>
+                  <a href="https://github.com/snawaza243/MediaPad" target="_blank">Source</a>
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+
+  <section class="contact py-5" id="contact">
+
+    <div class="container">
+
+      <div class="row">
+
+
+        <div class="col-lg-5 mr-lg-5 col-12">
+          <div class="google-map w-100">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1409.199443809789!2d77.04356784195923!3d30.250585231669415!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390fad32e787b607%3A0xe9bf5cab2824960a!2sRoad%2C%20Mullana%2C%20Haryana%20133203!5e0!3m2!1sen!2sin!4v1684164073521!5m2!1sen!2sin"
+              width="400" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+          </div>
+
+          <div class="contact-info d-flex justify-content-between align-items-center py-4 px-lg-5">
+            <div class="contact-info-item">
+              <h3 class="mb-3 text-white">Say Hi!</h3>
+              <p class="footer-text mb-0">
+                <a href="tel:+917541906557">+91 7541906557</a>
+              </p>
+              <p><a href="mailto:snawaza243@gmail.com">snawaza243@gmail.com</a></p>
+            </div>
+
+            <ul class="social-links">
+              <li style="margin: 3px; padding: 9px auto; height: 30px;"><a href="https://in.linkedin.com/in/snawaza243"
+                  target="_blank" class="" data-toggle="tooltip" data-placement="left" title="Linkedin">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24">
+                    <path fill="currentColor"
+                      d="M17.5 8.999a5.419 5.419 0 0 0-2.565.645A1 1 0 0 0 14 8.999h-4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-5.5a1 1 0 1 1 2 0v5.5a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-7.5a5.507 5.507 0 0 0-5.5-5.5Zm3.5 12h-2v-4.5a3 3 0 1 0-6 0v4.5h-2v-10h2v.703a1 1 0 0 0 1.781.625A3.483 3.483 0 0 1 21 14.5Zm-14-12H3a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-12a1 1 0 0 0-1-1Zm-1 12H4v-10h2ZM5.015 1.542a3.233 3.233 0 1 0-.057 6.457h.028a3.233 3.233 0 1 0 .029-6.457Zm-.029 4.457h-.028a1.222 1.222 0 0 1-1.37-1.228c0-.747.56-1.229 1.427-1.229A1.234 1.234 0 0 1 6.41 4.771c0 .746-.56 1.228-1.425 1.228Z" />
+                  </svg>
+                </a>
+              </li>
+              <li><a href="https://www.instagram.com/snawaza243/?hl=en" target="_blank" class="uil uil-instagram"
+                  data-toggle="tooltip" data-placement="left" title="Instagram"></a></li>
+              <li><a href="https://www.youtube.com/c/indiantechnoera" target="_blank" class="uil uil-youtube"
+                  data-toggle="tooltip" data-placement="left" title="Youtube"></a>
+              </li>
+
+              <li><a href="https://www.indiantechnoera.in" target="_blank" class="uil uil-web-section"
+                  data-toggle="tooltip" data-placement="left" title="IndianTechnoEra"></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-lg-6 col-12">
+
+          <div class="contact-form">
+
+            <h2 class="mb-4">Let's talk</h2>
+
+            <!-- <div class="row">
+              <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdlgWsUkX6eQ1pcaVY1u3WQdUTdcMXpxXRoL4rMpqitlhOIpg/viewform?embedded=true"
+                width="640" height="956" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+            </div> -->
+
+            <form id="contact-form">
+              <input type="hidden" name="contact_number">
+              <div class="row">
+                <div class="col-lg-6 col-12">
+                  <input type="text" class="form-control" name="user_name" id="user_name" placeholder="Your Name"
+                    id="name">
+                </div>
+
+                <div class="col-lg-6 col-12">
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Email" id="email">
+                </div>
+
+                <div class="col-lg-6 col-12">
+                  <input type="text" class="form-control" name="country" id="country" placeholder="Country" id="name">
+                </div>
+
+                <div class="col-lg-6 col-12">
+                  <input type="phone" class="form-control" name="phone" id="phone" placeholder="Phone" id="email">
+                </div>
+
+                <div class="col-12">
+                  <textarea name="message" rows="6" class="form-control" id="message" placeholder="Message"></textarea>
+                </div>
+
+                <input type="hidden" name="submitted_From" value="Codesam_PS2">
+                <input type="hidden" name="submited_From_Reply" value="Codesam">
+                <div class="ml-lg-auto col-lg-5 col-12">
+                  <input type="submit" class="form-control submit-btn" value="Send">
+                </div>
+              </div>
+            </form>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer py-5">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-12 col-12">
+          <p class="copyright-text text-center">Copyright &copy; 2023 CodeSam</p>
+          <p class="copyright-text text-center">Designed with ❤️ & <a rel="nofollow"
+              href="https://www.codesam.in">CodeSam</a></p>
+        </div>
+
+      </div>
+    </div>
+  </footer>
+  <script src="js/jquery-3.3.1.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/Headroom.js"></script>
+  <script src="js/jQuery.headroom.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/smoothscroll.js"></script>
+  <script src="js/custom.js"></script>
+</body>
+
+</html>
