@@ -1,0 +1,67 @@
+.tech-icon li a i,
+.tech-icon li a SVG {
+  font-size: 45px;
+  padding: 5px;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+}
+
+.skills-grid-container {
+  display: grid;
+  align-items: center;
+  justify-content: space-between;
+  grid-template-columns: 130px 130px 130px auto;
+  padding: 10px;
+}
+
+.skills-grid-container li {
+  height: 100px;
+
+}
+
+.skills-grid-container li a {
+  width: 150px !important;
+  padding: 40px;
+  font-size: 30px;
+  text-align: center;
+  justify-content: space-between;
+
+}
+
+.full-screen {
+  padding: 1rem 0 !important;
+
+}
+
+.about-social-grid-container {
+  display: flex;
+  padding: 10px;
+}
+
+.about-social-grid-container li {
+  padding-left: 10px;
+  font-size: 25px;
+  color: unset;
+}
+
+.about-social-grid-container li a {
+  padding-right: 10px;
+}
+
+.about-social-grid-container li a:hover {
+  cursor: pointer;
+
+}
+
+.timeline-info div .social-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+}
+
+.timeline-info div .social-link a,
+.about-social-grid-container li a {
+  color: unset;
+}

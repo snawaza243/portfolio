@@ -600,7 +600,9 @@ strong {
   }
 
   .navbar-light .navbar-toggler{
-    background-color: var(--main2);
+    /* background-color: var(--main2); */
+    background-color:unset;
+
     color: red !important;
 
   }
