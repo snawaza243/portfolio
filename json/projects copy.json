@@ -1,0 +1,53 @@
+{
+    "projects": [
+      {
+        "title": "Hostel Bazaar",
+        "year": 2023,
+        "type": "E-Commerce Web App",
+        "description": "HostelBazaar connects students to buy and sell used and new items at campus within low prices. Students declutter, earn money while others find cheap goods to reuse - conveniently.",
+        "techStack": ["ReactJS", "StyledComponent", "NodeJS", "MongoDB"],
+        "sourceLink": "https://github.com/snawaza243/hostelbazaar"
+      },
+      {
+        "title": "WeboFlix",
+        "year": 2022,
+        "type": "Video Streaming Web App",
+        "description": "This is a streaming platform like Netflix, built with React and other modern technologies. It has an easy-to-use interface, personalized recommendations, and seamless content playback.",
+        "techStack": ["ReactJS", "CSS", "NodeJS", "Firebase", "Redux"],
+        "sourceLink": "https://github.com/snawaza243/react-netflix-clone"
+      },
+      {
+        "title": "NewsFeed",
+        "year": 2022,
+        "type": "News Website",
+        "description": "A News website that provides the top news of the day with different categories from different countries.",
+        "techStack": ["ReactJS", "CSS", "useEffect", "NewsAPIs"],
+        "sourceLink": "https://github.com/snawaza243/news-feed.git"
+      },
+      {
+        "title": "Story Share",
+        "year": 2022,
+        "type": "Blog Website",
+        "description": "Stories Sharing is a platform for global storytelling that celebrates the diversity of human experience. It provides a space for people to express themselves freely and creatively.",
+        "techStack": ["ReactJS", "CSS", "NodeJS", "MySQL"],
+        "sourceLink": "https://github.com/snawaza243/story-share"
+      },
+      {
+        "title": "Todo App",
+        "year": 2022,
+        "type": "Todo Web Application",
+        "description": "An advanced ToDo app that allows users to manage tasks. Items can be updated, deleted, and stored locally for the current system user.",
+        "techStack": ["ReactJS", "CSS", "useEffect"],
+        "sourceLink": "https://github.com/snawaza243/react-todo-app"
+      },
+      {
+        "title": "MediaPad",
+        "year": 2021,
+        "type": "Desktop Application",
+        "description": "MediaPad is a desktop app with text-to-speech, speech-to-text, translation, and note-taking tools.",
+        "techStack": ["Python", "Tkinter", "gTTs"],
+        "sourceLink": "https://github.com/snawaza243/MediaPad"
+      }
+    ]
+  }
+  
