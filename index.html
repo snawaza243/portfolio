@@ -1076,6 +1076,265 @@ footer{background:var(--bg1);border-top:1px solid var(--border);padding:48px 0}
   </div>
 </section>
 
+
+
+<section id="github-stats" style="display:none">
+    <h2>My GitHub Stats</h2>
+
+    <div class="stats-container">
+        <!-- Main Stats with cache and error handling -->
+        <div class="stat-card">
+            <img 
+                src="https://github-readme-stats.vercel.app/api?username=snawaza243&show_icons=true&theme=tokyonight&cache_seconds=3600" 
+                alt="GitHub Stats"
+                onerror="this.onerror=null; this.src='https://via.placeholder.com/495x195?text=📊+Stats+Loading...&nbsp;Refresh+Page'"
+                loading="lazy"
+            />
+        </div>
+
+        <!-- Top Languages with cache and error handling -->
+        <div class="stat-card">
+            <img 
+                src="https://github-readme-stats.vercel.app/api/top-langs/?username=snawaza243&layout=compact&theme=tokyonight&cache_seconds=3600" 
+                alt="Top Languages"
+                onerror="this.onerror=null; this.src='https://via.placeholder.com/495x195?text=💻+Languages+Loading...&nbsp;Refresh+Page'"
+                loading="lazy"
+            />
+        </div>
+
+        <!-- Streak Stats (already working) -->
+        <div class="stat-card">
+            <img 
+                src="https://streak-stats.demolab.com/?user=snawaza243&theme=tokyonight" 
+                alt="GitHub Streak"
+                loading="lazy"
+            />
+        </div>
+    </div>
+
+    <!-- Fallback JavaScript API if images continue to fail -->
+    <div id="github-fallback-stats" style="display: none; margin-top: 2rem; padding: 1rem; background: #1a1b27; border-radius: 10px;">
+        <h3>📈 Live GitHub Stats</h3>
+        <div id="github-live-data">Loading live data...</div>
+    </div>
+</section>
+
+<style>
+    #github-stats {
+        padding: 4rem 2rem;
+        background: linear-gradient(135deg, #0a0a0a 0%, #1a1b27 100%);
+        border-radius: 20px;
+        margin: 2rem auto;
+        max-width: 1200px;
+    }
+
+    #github-stats h2 {
+        text-align: center;
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+        color: #58a6ff;
+        font-weight: bold;
+    }
+
+    #github-stats h3 {
+        color: #ffffff;
+        margin-bottom: 1rem;
+    }
+
+    .stats-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1.5rem;
+        align-items: flex-start;
+    }
+
+    .stat-card {
+        flex: 1;
+        min-width: 300px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 15px;
+        padding: 1rem;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .stat-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(88, 166, 255, 0.2);
+    }
+
+    .stat-card img {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+        display: block;
+    }
+
+    #github-fallback-stats {
+        background: #0d1117;
+        border: 1px solid #30363d;
+    }
+
+    #github-live-data {
+        color: #c9d1d9;
+        line-height: 1.6;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        #github-stats {
+            padding: 2rem 1rem;
+        }
+        
+        #github-stats h2 {
+            font-size: 1.8rem;
+        }
+        
+        .stat-card {
+            min-width: 250px;
+        }
+    }
+
+    /* Loading animation */
+    @keyframes pulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.5; }
+    }
+
+    .stat-card img[src*="placeholder"] {
+        animation: pulse 1.5s ease-in-out infinite;
+    }
+</style>
+
+<script>
+    // Check if images failed to load and show fallback
+    document.addEventListener('DOMContentLoaded', function() {
+        const images = document.querySelectorAll('.stat-card img');
+        let failedCount = 0;
+        
+        images.forEach(img => {
+            img.addEventListener('error', function() {
+                failedCount++;
+                if (failedCount >= 2) { // If both main stats fail
+                    showGitHubFallback();
+                }
+            });
+            
+            // Also check after 5 seconds if images are still broken
+            setTimeout(() => {
+                if (!img.complete || img.naturalWidth === 0) {
+                    failedCount++;
+                    if (failedCount >= 2) {
+                        showGitHubFallback();
+                    }
+                }
+            }, 5000);
+        });
+        
+        function showGitHubFallback() {
+            const fallbackDiv = document.getElementById('github-fallback-stats');
+            if (fallbackDiv && fallbackDiv.style.display === 'none') {
+                fallbackDiv.style.display = 'block';
+                fetchGitHubData();
+            }
+        }
+        
+        async function fetchGitHubData() {
+            const username = 'snawaza243';
+            const liveDataDiv = document.getElementById('github-live-data');
+            
+            try {
+                // Fetch user data
+                const userRes = await fetch(`https://api.github.com/users/${username}`);
+                const userData = await userRes.json();
+                
+                // Fetch repos data
+                const reposRes = await fetch(`https://api.github.com/users/${username}/repos?per_page=100`);
+                const reposData = await reposRes.json();
+                
+                // Calculate total stars
+                const totalStars = reposData.reduce((sum, repo) => sum + repo.stargazers_count, 0);
+                
+                // Calculate languages
+                const languages = {};
+                reposData.forEach(repo => {
+                    if (repo.language) {
+                        languages[repo.language] = (languages[repo.language] || 0) + 1;
+                    }
+                });
+                const topLanguages = Object.entries(languages)
+                    .sort((a, b) => b[1] - a[1])
+                    .slice(0, 5)
+                    .map(([lang, count]) => `${lang} (${count} repos)`)
+                    .join(', ');
+                
+                liveDataDiv.innerHTML = `
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                        <div style="padding: 1rem; background: #161b22; border-radius: 8px;">
+                            <strong>📚 Public Repos:</strong><br>
+                            ${userData.public_repos}
+                        </div>
+                        <div style="padding: 1rem; background: #161b22; border-radius: 8px;">
+                            <strong>👥 Followers:</strong><br>
+                            ${userData.followers}
+                        </div>
+                        <div style="padding: 1rem; background: #161b22; border-radius: 8px;">
+                            <strong>⭐ Total Stars:</strong><br>
+                            ${totalStars}
+                        </div>
+                        <div style="padding: 1rem; background: #161b22; border-radius: 8px;">
+                            <strong>🔧 Top Languages:</strong><br>
+                            ${topLanguages || 'Not available'}
+                        </div>
+                    </div>
+                    <p style="margin-top: 1rem; font-size: 0.9rem; color: #8b949e;">
+                        ⚡ Live data from GitHub API | <a href="https://github.com/${username}" target="_blank" style="color: #58a6ff;">View Profile →</a>
+                    </p>
+                `;
+            } catch (error) {
+                liveDataDiv.innerHTML = `
+                    <p style="color: #f85149;">⚠️ Unable to load GitHub data. Please check your internet connection or <a href="https://github.com/${username}" target="_blank" style="color: #58a6ff;">visit your GitHub profile directly</a>.</p>
+                `;
+            }
+        }
+    });
+</script>
+
+<style>
+#github-stats {
+    text-align: center;
+    padding: 50px 20px;
+    background: #0d1117; /* dark background */
+    color: white;
+}
+
+#github-stats h2 {
+    margin-bottom: 30px;
+    font-size: 28px;
+}
+
+.stats-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.stats-container img {
+    width: 350px;
+    max-width: 100%;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.stats-container img:hover {
+    transform: scale(1.05);
+}
+</style>
+
+
 <!-- ═══════════════════════════════════════════════════
      CERTIFICATIONS
 ═══════════════════════════════════════════════════ -->
