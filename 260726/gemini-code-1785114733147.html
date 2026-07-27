@@ -1,0 +1,1384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Shahnawaz Alam — .NET Backend Architect & Staff Engineer Portfolio</title>
+<meta name="description" content="Shahnawaz Alam — Principal .NET Backend Engineer with 2+ years owning enterprise production systems across HCM platforms and fintech architectures."/>
+<meta name="keywords" content=".NET Core, Backend Architect, C#, Web API, SQL Server, Microservices, Docker, RBAC, JWT, Gurugram"/>
+<meta name="author" content="Shahnawaz Alam"/>
+<meta name="theme-color" content="#080b0f"/>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23080b0f'/%3E%3Cpath d='M18 22l12 10-12 10M34 42h12' stroke='%2334d399' stroke-width='4' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E"/>
+
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+<script src="https://code.iconify.design/3/3.1.1/iconify.min.js"></script>
+
+<script>
+(function(){
+  try{
+    var s = JSON.parse(localStorage.getItem('sa_system_theme') || '{}');
+    var mode = s.mode || 'dark';
+    var accent = s.accent || 'green';
+    var gradient = s.gradient !== undefined ? s.gradient : true;
+    var resolved = mode;
+    if(mode === 'system'){ resolved = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+    document.documentElement.setAttribute('data-theme', resolved);
+    document.documentElement.setAttribute('data-accent', accent);
+    if(gradient) document.documentElement.setAttribute('data-gradient','on');
+  }catch(e){}
+})();
+</script>
+
+<style>
+:root {
+  --bg: #080b0f; --bg1: #0b0f14; --bg2: #0f141b; --surface: #0e131a; --surface2: #131a23;
+  --border: rgba(148, 178, 166, 0.08);
+  --live: #34d399; --signal: #38bdf8; --warn: #f5a623; --danger: #fb7185;
+  --text: #e7edf0; --text2: #93a3ab; --text3: #4b5b62; --white: #f4faf7;
+  --r: 12px; --r2: 20px;
+  --fh: 'Space Grotesk', sans-serif; --fb: 'Inter', sans-serif; --fm: 'JetBrains Mono', monospace;
+  --ease: cubic-bezier(.16, 1, .3, 1);
+  --a06: color-mix(in srgb, var(--live) 6%, transparent);
+  --a08: color-mix(in srgb, var(--live) 8%, transparent);
+  --a10: color-mix(in srgb, var(--live) 10%, transparent);
+  --a12: color-mix(in srgb, var(--live) 12%, transparent);
+  --a15: color-mix(in srgb, var(--live) 15%, transparent);
+  --a18: color-mix(in srgb, var(--live) 18%, transparent);
+  --a20: color-mix(in srgb, var(--live) 20%, transparent);
+  --a25: color-mix(in srgb, var(--live) 25%, transparent);
+  --a28: color-mix(in srgb, var(--live) 28%, transparent);
+  --a35: color-mix(in srgb, var(--live) 35%, transparent);
+  --a40: color-mix(in srgb, var(--live) 40%, transparent);
+  --border2: var(--a28);
+  --on-accent: #04140d;
+}
+
+[data-theme="light"] {
+  --bg: #f4f7f6; --bg1: #eef2f0; --bg2: #e3e9e6; --surface: #ffffff; --surface2: #f8faf9;
+  --border: rgba(10, 25, 20, 0.1);
+  --text: #12181a; --text2: #4a585e; --text3: #809096; --white: #080b0f;
+}
+
+[data-accent="blue"] { --live: #38bdf8; --on-accent: #03141f; }
+[data-accent="purple"] { --live: #a78bfa; --on-accent: #140c26; }
+[data-accent="amber"] { --live: #f5a623; --on-accent: #241300; }
+[data-accent="rose"] { --live: #fb7185; --on-accent: #230409; }
+[data-accent="green"] { --live: #34d399; --on-accent: #04140d; }
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body { font-family: var(--fb); background: var(--bg); color: var(--text); line-height: 1.65; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; }
+button { cursor: pointer; border: none; background: none; font-family: inherit; color: inherit; }
+img { display: block; max-width: 100%; }
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--live); border-radius: 4px; }
+:focus-visible { outline: 2px solid var(--live); outline-offset: 2px; }
+
+.skip-link { position: fixed; top: -100px; left: 12px; z-index: 10000; background: var(--live); color: var(--on-accent); padding: 10px 16px; border-radius: 8px; font-weight: 700; font-size: 0.85rem; transition: top .2s; }
+.skip-link:focus { top: 12px; }
+
+#loader { position: fixed; inset: 0; z-index: 9999; background: var(--bg); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px; transition: opacity .5s var(--ease), visibility .5s; }
+#loader.done { opacity: 0; visibility: hidden; pointer-events: none; }
+.loader-logo { font-family: var(--fm); font-size: 0.9rem; color: var(--live); letter-spacing: 0.06em; text-align: center; }
+.loader-bar-wrap { width: 180px; height: 2px; background: rgba(255,255,255,0.06); border-radius: 2px; overflow: hidden; }
+.loader-bar { height: 100%; width: 0; background: var(--live); animation: loaderFill 1.1s var(--ease) forwards; }
+@keyframes loaderFill { to { width: 100%; } }
+
+.cursor-dot { position: fixed; width: 5px; height: 5px; background: var(--live); border-radius: 50%; pointer-events: none; z-index: 9998; transform: translate(-50%, -50%); }
+.cursor-ring { position: fixed; width: 32px; height: 32px; border: 1px solid var(--a40); border-radius: 50%; pointer-events: none; z-index: 9997; transform: translate(-50%, -50%); transition: width .25s var(--ease), height .25s var(--ease), border-color .25s; }
+.cursor-ring.hover { width: 50px; height: 50px; border-color: var(--signal); }
+@media (hover: none) { .cursor-dot, .cursor-ring { display: none; } }
+
+.scroll-progress { position: fixed; top: 0; left: 0; height: 2px; z-index: 5000; background: var(--live); width: 0; }
+.bg-grid { position: fixed; inset: 0; z-index: 0; pointer-events: none; background-image: linear-gradient(rgba(148,178,166,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(148,178,166,0.03) 1px, transparent 1px); background-size: 56px 56px; mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 20%, transparent 100%); }
+
+#toastStack { position: fixed; bottom: 20px; right: 20px; z-index: 6000; display: flex; flex-direction: column; gap: 10px; max-width: 320px; }
+.toast { display: flex; align-items: center; gap: 10px; padding: 12px 16px; background: var(--surface); border: 1px solid var(--border2); border-radius: 11px; font-size: 0.83rem; color: var(--text); box-shadow: 0 12px 32px rgba(0,0,0,0.4); animation: toastIn .3s var(--ease); }
+.toast iconify-icon { color: var(--live); font-size: 1.1rem; flex-shrink: 0; }
+@keyframes toastIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+.cmdk-overlay { position: fixed; inset: 0; z-index: 7000; background: rgba(4,6,8,0.6); backdrop-filter: blur(6px); display: none; align-items: flex-start; justify-content: center; padding-top: 14vh; }
+.cmdk-overlay.open { display: flex; }
+.cmdk-box { width: min(560px, 90vw); background: var(--surface); border: 1px solid var(--border2); border-radius: 16px; overflow: hidden; box-shadow: 0 30px 80px rgba(0,0,0,0.6); }
+.cmdk-input-row { display: flex; align-items: center; gap: 10px; padding: 14px 18px; border-bottom: 1px solid var(--border); }
+.cmdk-input-row iconify-icon { color: var(--text3); font-size: 1.1rem; }
+#cmdkInput { flex: 1; background: none; border: none; outline: none; color: var(--text); font-size: 0.95rem; font-family: var(--fb); }
+.cmdk-esc { font-family: var(--fm); font-size: 0.68rem; color: var(--text3); border: 1px solid var(--border); border-radius: 5px; padding: 2px 6px; }
+.cmdk-list { max-height: 340px; overflow-y: auto; padding: 8px; }
+.cmdk-item { display: flex; align-items: center; gap: 12px; padding: 11px 14px; border-radius: 9px; font-size: 0.87rem; color: var(--text2); cursor: pointer; }
+.cmdk-item iconify-icon { font-size: 1.05rem; color: var(--text3); }
+.cmdk-item.active, .cmdk-item:hover { background: var(--a10); color: var(--text); }
+.cmdk-item.active iconify-icon, .cmdk-item:hover iconify-icon { color: var(--live); }
+
+.theme-overlay { position: fixed; inset: 0; z-index: 7000; background: rgba(4,6,8,0.5); backdrop-filter: blur(4px); display: none; }
+.theme-overlay.open { display: block; }
+.theme-panel { position: fixed; top: 0; right: 0; bottom: 0; z-index: 7001; width: min(340px, 88vw); background: var(--surface); border-left: 1px solid var(--border); padding: 26px; transform: translateX(100%); transition: transform .35s var(--ease); overflow-y: auto; }
+.theme-panel.open { transform: translateX(0); }
+.tp-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 22px; }
+.tp-title { font-family: var(--fh); font-size: 1.1rem; font-weight: 700; }
+.tp-close { width: 32px; height: 32px; border-radius: 9px; background: var(--surface2); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; color: var(--text2); }
+.tp-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text3); font-weight: 600; margin-bottom: 10px; margin-top: 22px; }
+.tp-modes { display: flex; gap: 8px; }
+.tp-mode { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 12px 8px; border-radius: 11px; border: 1px solid var(--border); background: var(--surface2); font-size: 0.72rem; color: var(--text2); transition: all .2s; }
+.tp-mode.active { border-color: var(--border2); background: var(--a10); color: var(--live); }
+.tp-mode iconify-icon { font-size: 1.2rem; }
+.tp-accents { display: flex; gap: 10px; }
+.tp-accent { width: 36px; height: 36px; border-radius: 50%; border: 2px solid transparent; position: relative; transition: all .2s; }
+.tp-accent.active { border-color: var(--text); }
+.tp-toggle-row { display: flex; align-items: center; justify-content: space-between; padding: 12px 14px; background: var(--surface2); border: 1px solid var(--border); border-radius: 11px; }
+.switch { width: 40px; height: 22px; border-radius: 20px; background: var(--surface2); border: 1px solid var(--border); position: relative; transition: all .2s; cursor: pointer; }
+.switch::after { content: ''; position: absolute; top: 2px; left: 2px; width: 16px; height: 16px; border-radius: 50%; background: var(--text3); transition: all .2s; }
+.switch.on { background: var(--a20); border-color: var(--border2); }
+.switch.on::after { transform: translateX(18px); background: var(--live); }
+
+.nav { position: fixed; top: 20px; left: 50%; transform: translateX(-50%); z-index: 1000; width: calc(100% - 40px); max-width: 900px; }
+.nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 11px 18px; border-radius: 14px; border: 1px solid var(--border); background: rgba(8,11,15,0.55); backdrop-filter: blur(18px) saturate(160%); transition: all .35s var(--ease); }
+[data-theme="light"] .nav-inner { background: rgba(244,248,246,0.75); }
+.nav.scrolled .nav-inner { background: rgba(8,11,15,0.88); border-color: var(--a18); box-shadow: 0 8px 32px rgba(0,0,0,0.5); }
+.nav-logo { font-family: var(--fm); font-size: 0.92rem; font-weight: 600; color: var(--live); display: flex; align-items: center; gap: 6px; }
+.nav-links { display: flex; align-items: center; gap: 4px; }
+.nav-links a { font-size: 0.8rem; font-weight: 500; color: var(--text3); padding: 6px 12px; border-radius: 8px; transition: all .2s; }
+.nav-links a:hover { color: var(--text); background: rgba(255,255,255,0.04); }
+.nav-links a.active { color: var(--live); }
+.nav-right { display: flex; align-items: center; gap: 6px; }
+.nav-icon-btn { width: 32px; height: 32px; border-radius: 8px; border: 1px solid var(--border); background: rgba(255,255,255,0.03); display: flex; align-items: center; justify-content: center; font-size: 0.95rem; color: var(--text2); transition: all .2s; }
+.nav-icon-btn:hover { border-color: var(--border2); color: var(--live); }
+.nav-hire { display: inline-flex; align-items: center; gap: 6px; padding: 7px 15px; border-radius: 9px; background: var(--live); color: var(--on-accent); font-size: 0.8rem; font-weight: 700; transition: all .25s var(--ease); }
+[data-gradient="on"] .nav-hire { background: linear-gradient(135deg, var(--live), var(--signal)); }
+.nav-hire:hover { transform: translateY(-1px); box-shadow: 0 6px 20px var(--a35); }
+.nav-hire .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--on-accent); animation: pulse 1.8s infinite; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
+.burger { display: none; flex-direction: column; gap: 4px; padding: 4px; }
+.burger span { display: block; width: 18px; height: 1.5px; background: var(--text2); border-radius: 2px; }
+
+.bottom-nav { display: none; position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 900; border-radius: 18px; border: 1px solid var(--border); background: rgba(8,11,15,0.85); backdrop-filter: blur(20px) saturate(160%); box-shadow: 0 -8px 30px rgba(0,0,0,0.4); }
+[data-theme="light"] .bottom-nav { background: rgba(244,248,246,0.92); }
+.bn-inner { display: flex; justify-content: space-around; align-items: center; padding: 8px 4px; }
+.bn-item { display: flex; flex-direction: column; align-items: center; gap: 3px; padding: 8px 6px; border-radius: 12px; color: var(--text3); min-width: 52px; transition: all .2s; }
+.bn-item iconify-icon { font-size: 1.25rem; }
+.bn-item span { font-size: 0.62rem; font-weight: 600; }
+.bn-item.active { color: var(--live); background: var(--a10); }
+
+.wrap { max-width: 1080px; margin: 0 auto; padding: 0 26px; }
+section { position: relative; z-index: 2; }
+.sec { padding: 110px 0; }
+.eyebrow { display: inline-flex; align-items: center; gap: 8px; font-family: var(--fm); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--live); margin-bottom: 14px; }
+.eyebrow::before { content: ''; width: 16px; height: 1.5px; background: var(--live); }
+.heading { font-family: var(--fh); font-size: clamp(2.1rem, 4.2vw, 3rem); font-weight: 700; line-height: 1.12; color: var(--white); letter-spacing: -0.02em; margin-bottom: 16px; }
+.heading .gr { color: var(--live); }
+[data-gradient="on"] .heading .gr { background: linear-gradient(135deg, var(--live), var(--signal)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.sub { font-size: 0.98rem; color: var(--text2); max-width: 520px; line-height: 1.8; }
+
+#hero { min-height: 100vh; display: flex; align-items: center; padding: 120px 0 70px; }
+.hero-inner { position: relative; z-index: 2; display: grid; grid-template-columns: 1.05fr 1fr; gap: 56px; align-items: center; }
+.hero-badge { display: inline-flex; align-items: center; gap: 8px; padding: 5px 14px 5px 6px; border-radius: 30px; border: 1px solid var(--border2); background: var(--a06); font-family: var(--fm); font-size: 0.72rem; color: var(--text2); margin-bottom: 26px; }
+.hero-badge .ping { width: 7px; height: 7px; border-radius: 50%; background: var(--live); box-shadow: 0 0 10px var(--live); position: relative; }
+.hero-badge .ping::before { content: ''; position: absolute; inset: -4px; border-radius: 50%; border: 1px solid var(--live); animation: ringOut 1.8s ease-out infinite; }
+@keyframes ringOut { 0%{transform:scale(0.4);opacity:1} 100%{transform:scale(2.2);opacity:0} }
+.hero-name { font-family: var(--fh); font-size: clamp(2.7rem, 5.6vw, 4.3rem); font-weight: 700; line-height: 1.02; letter-spacing: -0.03em; color: var(--white); margin-bottom: 6px; }
+[data-gradient="on"] .hero-name { background: linear-gradient(135deg, var(--white), var(--live) 120%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.hero-role { font-family: var(--fm); font-size: clamp(1rem, 2vw, 1.3rem); font-weight: 500; color: var(--live); margin-bottom: 22px; min-height: 1.4em; }
+.cursor-type { display: inline-block; width: 2px; height: 1em; background: var(--live); animation: blink 1s infinite; vertical-align: text-bottom; margin-left: 2px; }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+.hero-desc { font-size: 0.96rem; color: var(--text2); max-width: 460px; line-height: 1.85; margin-bottom: 34px; }
+.hero-desc strong { color: var(--text); font-weight: 600; }
+.hero-ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 44px; }
+.btn-glow { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; border-radius: 11px; font-size: 0.86rem; font-weight: 700; background: var(--live); color: var(--on-accent); transition: all .25s var(--ease); }
+[data-gradient="on"] .btn-glow { background: linear-gradient(135deg, var(--live), var(--signal)); }
+.btn-glow:hover { transform: translateY(-2px); box-shadow: 0 10px 28px var(--a40); }
+.btn-outline { display: inline-flex; align-items: center; gap: 8px; padding: 11px 22px; border-radius: 11px; font-size: 0.86rem; font-weight: 600; border: 1px solid var(--border); background: rgba(255,255,255,0.02); color: var(--text); transition: all .25s var(--ease); }
+.btn-outline:hover { border-color: var(--border2); background: var(--a08); transform: translateY(-1px); }
+.hero-metrics { display: flex; gap: 0; flex-wrap: wrap; }
+.metric { padding: 14px 22px 14px 0; border-right: 1px solid var(--border); margin-right: 22px; }
+.metric:last-child { border-right: none; margin-right: 0; }
+.metric-val { font-family: var(--fh); font-size: 1.7rem; font-weight: 700; line-height: 1; color: var(--white); margin-bottom: 3px; }
+.metric-lab { font-size: 0.68rem; color: var(--text3); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 500; }
+
+.status-panel { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--r2); overflow: hidden; box-shadow: 0 30px 70px rgba(0,0,0,0.6); }
+.sp-head { display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; border-bottom: 1px solid var(--border); background: rgba(255,255,255,0.015); }
+.sp-title { display: flex; align-items: center; gap: 8px; font-family: var(--fm); font-size: 0.74rem; color: var(--text2); }
+.sp-status { display: flex; align-items: center; gap: 6px; font-family: var(--fm); font-size: 0.7rem; color: var(--live); font-weight: 600; }
+.sp-status .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--live); box-shadow: 0 0 8px var(--live); animation: pulse 1.8s infinite; }
+.sp-body { padding: 20px; }
+.sp-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 16px; }
+.sp-cell { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; }
+.sp-cell-lab { font-size: 0.64rem; color: var(--text3); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; }
+.sp-cell-val { font-family: var(--fm); font-size: 1.15rem; font-weight: 600; color: var(--white); }
+.sp-cell-val.g { color: var(--live); }
+.sp-graph { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; margin-bottom: 12px; }
+.sp-graph-lab { display: flex; justify-content: space-between; font-size: 0.68rem; color: var(--text3); margin-bottom: 8px; font-family: var(--fm); }
+.sp-log { font-family: var(--fm); font-size: 0.71rem; color: var(--text3); line-height: 2; border-top: 1px solid var(--border); padding-top: 10px; }
+.sp-log .ok { color: var(--live); }
+.sp-log .path { color: var(--text2); }
+
+.marquee-section { padding: 24px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); overflow: hidden; position: relative; z-index: 2; }
+.marquee-track { display: flex; width: max-content; animation: marquee 30s linear infinite; }
+.marquee-track:hover { animation-play-state: paused; }
+.m-item { display: flex; align-items: center; gap: 9px; padding: 0 28px; font-size: 0.8rem; font-weight: 500; color: var(--text3); white-space: nowrap; }
+.m-item iconify-icon { font-size: 1.05rem; color: var(--text2); }
+.m-item.hot iconify-icon { color: var(--live); }
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+#about { background: linear-gradient(180deg, var(--bg) 0%, var(--bg1) 100%); }
+.bento { display: grid; grid-template-columns: 1.3fr 1fr; gap: 14px; margin-top: 52px; }
+.bento-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r2); padding: 26px; transition: all .3s var(--ease); position: relative; }
+.bento-card:hover { border-color: var(--border2); transform: translateY(-2px); }
+.bc-story { grid-column: 1; grid-row: 1/3; padding: 32px; }
+.bc-story .story-text { font-size: 0.93rem; color: var(--text2); line-height: 1.9; }
+.bc-story .story-text p { margin-bottom: 16px; }
+.bc-story .story-text strong { color: var(--live); font-weight: 600; }
+.bc-story .story-text em { color: var(--text); font-style: normal; }
+.bc-num { font-family: var(--fh); font-size: 2.8rem; font-weight: 700; line-height: 1; color: var(--white); margin-bottom: 6px; }
+.bc-num-label { font-size: 0.76rem; color: var(--text3); text-transform: uppercase; letter-spacing: 0.08em; }
+.bc-icon { margin-bottom: 10px; color: var(--live); }
+.bc-icon iconify-icon { font-size: 1.5rem; }
+.bc-title { font-family: var(--fh); font-size: 0.98rem; font-weight: 700; color: var(--white); margin-bottom: 6px; }
+.bc-desc { font-size: 0.8rem; color: var(--text3); line-height: 1.6; }
+.bc-accent { border-color: var(--border2); background: linear-gradient(145deg, var(--surface), var(--a06)); }
+.bc-tag-list { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 12px; }
+.bc-tag { padding: 3px 10px; border-radius: 6px; font-size: 0.7rem; font-weight: 500; background: var(--a08); border: 1px solid var(--border2); color: var(--live); }
+
+#skills { background: var(--bg1); }
+.skills-layout { display: grid; grid-template-columns: 260px 1fr; margin-top: 56px; border: 1px solid var(--border); border-radius: var(--r2); overflow: hidden; }
+.skills-sidebar { background: var(--surface); border-right: 1px solid var(--border); padding: 8px; }
+.skill-tab { display: flex; align-items: center; gap: 11px; padding: 12px 15px; border-radius: 10px; cursor: pointer; transition: all .2s; margin-bottom: 2px; }
+.skill-tab:hover { background: rgba(255,255,255,0.03); }
+.skill-tab.active { background: var(--a08); border: 1px solid var(--border2); }
+.skill-tab .tab-icon { width: 32px; height: 32px; border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 1rem; background: var(--bg2); flex-shrink: 0; color: var(--text2); }
+.skill-tab.active .tab-icon { background: var(--a15); color: var(--live); }
+.tab-name { font-size: 0.85rem; font-weight: 600; color: var(--text2); }
+.skill-tab.active .tab-name { color: var(--text); }
+.tab-count { margin-left: auto; font-size: 0.7rem; color: var(--text3); font-family: var(--fm); }
+.skills-panel { display: none; padding: 26px 30px; flex-direction: column; gap: 16px; }
+.skills-panel.active { display: flex; }
+.sk-item { display: grid; grid-template-columns: 1fr 44px; gap: 10px; align-items: center; }
+.sk-meta { grid-column: 1/-1; display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
+.sk-name { font-size: 0.88rem; font-weight: 500; color: var(--text); }
+.sk-pct { font-family: var(--fm); font-size: 0.73rem; color: var(--text3); }
+.sk-bar { grid-column: 1; height: 5px; background: rgba(255,255,255,0.04); border-radius: 4px; overflow: hidden; }
+.sk-fill { height: 100%; width: 0; border-radius: 4px; background: var(--live); transition: width 1.2s var(--ease); }
+.sk-level { grid-column: 2; font-size: 0.68rem; font-weight: 600; padding: 3px 8px; border-radius: 6px; text-align: center; white-space: nowrap; }
+.sk-level.expert { background: var(--a10); color: var(--live); border: 1px solid var(--border2); }
+.sk-level.advanced { background: rgba(56,189,248,0.09); color: var(--signal); border: 1px solid rgba(56,189,248,0.2); }
+.sk-level.proficient { background: rgba(245,166,35,0.09); color: var(--warn); border: 1px solid rgba(245,166,35,0.2); }
+.sk-divider { height: 1px; background: var(--border); }
+
+#experience { background: var(--bg); }
+.exp-list { display: flex; flex-direction: column; margin-top: 56px; position: relative; }
+.exp-list::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 1px; background: linear-gradient(180deg, var(--live), transparent); }
+.exp-item { display: grid; grid-template-columns: 200px 1fr; gap: 44px; padding: 42px 0 42px 36px; border-bottom: 1px solid var(--border); position: relative; }
+.exp-item:last-child { border-bottom: none; }
+.exp-item::before { content: ''; position: absolute; left: -4px; top: 48px; width: 8px; height: 8px; border-radius: 50%; background: var(--live); box-shadow: 0 0 0 3px var(--a15); }
+.exp-date { font-family: var(--fm); font-size: 0.74rem; font-weight: 600; color: var(--live); letter-spacing: 0.04em; margin-bottom: 8px; }
+.exp-company { font-family: var(--fh); font-size: 1.05rem; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+.exp-loc { font-size: 0.77rem; color: var(--text3); display: flex; align-items: center; gap: 6px; margin-bottom: 12px; flex-wrap: wrap; }
+.exp-role { font-family: var(--fh); font-size: 1.25rem; font-weight: 700; color: var(--white); margin-bottom: 18px; line-height: 1.2; }
+.exp-role .exp-role-badge { display: inline-block; margin-left: 10px; padding: 2px 10px; border-radius: 6px; background: var(--a10); border: 1px solid var(--border2); font-size: 0.68rem; font-weight: 700; color: var(--live); vertical-align: middle; }
+.impact-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
+.impact-item { display: flex; gap: 10px; font-size: 0.87rem; color: var(--text2); line-height: 1.7; padding: 11px 15px; background: rgba(255,255,255,0.015); border-radius: 9px; border-left: 2px solid var(--a25); }
+.impact-item strong { color: var(--text); font-weight: 600; }
+.tech-stack { display: flex; flex-wrap: wrap; gap: 7px; }
+.tech-pill { display: inline-flex; align-items: center; gap: 5px; padding: 4px 11px; border-radius: 7px; font-size: 0.71rem; font-weight: 500; background: var(--surface2); border: 1px solid var(--border); color: var(--text3); font-family: var(--fm); }
+
+#projects { background: var(--bg1); }
+.proj-toolbar { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; margin-top: 52px; margin-bottom: 24px; }
+.proj-search { display: flex; align-items: center; gap: 8px; padding: 9px 14px; border-radius: 10px; border: 1px solid var(--border); background: var(--surface); min-width: 220px; }
+.proj-search iconify-icon { color: var(--text3); }
+.proj-search input { background: none; border: none; outline: none; color: var(--text); font-size: 0.85rem; width: 100%; font-family: var(--fb); }
+.proj-filters { display: flex; flex-wrap: wrap; gap: 8px; }
+.pf-chip { padding: 7px 14px; border-radius: 8px; font-size: 0.78rem; font-weight: 500; border: 1px solid var(--border); background: var(--surface); color: var(--text3); transition: all .2s; }
+.pf-chip.active { border-color: var(--border2); background: var(--a10); color: var(--live); }
+.proj-featured { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 18px; }
+.proj-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r2); padding: 30px; transition: all .3s var(--ease); }
+.proj-card:hover { border-color: var(--border2); transform: translateY(-4px); }
+.proj-card.filtered-out { display: none; }
+.proj-idx { font-family: var(--fm); font-size: 0.68rem; color: var(--text3); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 15px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.proj-idx::after { content: ''; flex: 1; height: 1px; background: var(--border); min-width: 20px; }
+.proj-heading { font-family: var(--fh); font-size: 1.35rem; font-weight: 700; color: var(--white); margin-bottom: 6px; }
+.proj-type { font-size: 0.77rem; color: var(--text3); margin-bottom: 18px; }
+.proj-problem { margin-bottom: 18px; padding: 13px 15px; background: rgba(255,255,255,0.02); border-radius: 10px; border-top: 2px solid var(--border2); }
+.prob-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--live); font-weight: 700; margin-bottom: 6px; }
+.prob-text { font-size: 0.82rem; color: var(--text2); line-height: 1.7; }
+.feat-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 18px; }
+.feat-item { display: flex; align-items: flex-start; gap: 9px; font-size: 0.83rem; color: var(--text2); line-height: 1.55; }
+.feat-check { color: var(--live); font-size: 0.78rem; margin-top: 2px; flex-shrink: 0; }
+.proj-stack { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 16px; }
+.stack-chip { display: inline-flex; align-items: center; gap: 5px; padding: 3px 10px; border-radius: 7px; font-size: 0.7rem; font-weight: 500; font-family: var(--fm); background: var(--a06); border: 1px solid var(--border2); color: var(--live); }
+.proj-outcome { display: flex; align-items: center; gap: 8px; padding: 10px 13px; background: rgba(56,189,248,0.06); border: 1px solid rgba(56,189,248,0.18); border-radius: 9px; font-size: 0.81rem; color: var(--signal); font-weight: 500; margin-bottom: 14px; }
+.proj-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.proj-btn { display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; border-radius: 9px; font-size: 0.78rem; font-weight: 600; border: 1px solid var(--border); color: var(--text2); transition: all .2s; }
+.proj-btn:hover { border-color: var(--border2); color: var(--live); }
+
+#stats { background: var(--bg); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.stats-row { display: grid; grid-template-columns: repeat(4, 1fr); }
+.stat-box { padding: 56px 36px; text-align: center; border-right: 1px solid var(--border); }
+.stat-box:last-child { border-right: none; }
+.stat-val { font-family: var(--fh); font-size: clamp(2.6rem, 4.5vw, 3.6rem); font-weight: 700; line-height: 1; color: var(--white); margin-bottom: 10px; }
+.stat-name { font-size: 0.76rem; color: var(--text3); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 4px; }
+
+#ghstats { background: var(--bg1); }
+.gh-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 52px; }
+.gh-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r2); padding: 16px; overflow: hidden; }
+.gh-card img { width: 100%; border-radius: 10px; }
+.gh-full { grid-column: 1/-1; }
+
+#certs { background: var(--bg); }
+.cred-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 52px; }
+.edu-card { background: var(--surface); border: 1px solid var(--border2); border-radius: var(--r2); padding: 26px; display: flex; flex-direction: column; gap: 8px; }
+.edu-deg { font-family: var(--fh); font-size: 1.05rem; font-weight: 700; color: var(--white); }
+.edu-school { font-size: 0.85rem; color: var(--text2); }
+.edu-meta { display: flex; gap: 14px; font-family: var(--fm); font-size: 0.74rem; color: var(--text3); margin-top: 4px; flex-wrap: wrap; }
+.certs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 14px; }
+.cert-card { display: flex; align-items: center; gap: 13px; padding: 16px 18px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); transition: all .25s var(--ease); }
+.cert-card:hover { border-color: var(--border2); transform: translateY(-2px); }
+.cert-ico { width: 38px; height: 38px; border-radius: 10px; background: var(--bg2); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 1.15rem; flex-shrink: 0; color: var(--live); }
+.cert-name { font-size: 0.83rem; font-weight: 600; color: var(--text); margin-bottom: 2px; line-height: 1.3; }
+.cert-by { font-size: 0.73rem; color: var(--text3); }
+
+#contact { background: var(--bg1); }
+.contact-wrap { display: grid; grid-template-columns: 1fr 1.25fr; gap: 64px; align-items: start; }
+.contact-tagline { font-family: var(--fh); font-size: clamp(1.7rem, 3.2vw, 2.4rem); font-weight: 700; line-height: 1.18; color: var(--white); margin-bottom: 16px; }
+.contact-tagline .gr { color: var(--live); }
+.contact-note { font-size: 0.92rem; color: var(--text2); line-height: 1.8; margin-bottom: 32px; }
+.contact-links { display: flex; flex-direction: column; gap: 10px; }
+.c-link { display: flex; align-items: center; gap: 14px; padding: 13px 16px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); transition: all .25s var(--ease); color: inherit; width: 100%; text-align: left; }
+.c-link:hover { border-color: var(--border2); transform: translateX(4px); }
+.c-link-icon { width: 36px; height: 36px; border-radius: 9px; background: var(--a08); border: 1px solid var(--border2); display: flex; align-items: center; justify-content: center; font-size: 0.98rem; flex-shrink: 0; color: var(--live); }
+.c-link-label { font-size: 0.71rem; color: var(--text3); margin-bottom: 1px; text-transform: uppercase; letter-spacing: 0.06em; }
+.c-link-val { font-size: 0.86rem; font-weight: 500; color: var(--text); }
+.form-box { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r2); padding: 32px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.fg { display: flex; flex-direction: column; gap: 7px; margin-bottom: 14px; }
+.fg label { font-size: 0.75rem; font-weight: 600; color: var(--text2); letter-spacing: 0.03em; text-transform: uppercase; }
+.fg input, .fg textarea { padding: 11px 15px; border-radius: 10px; border: 1px solid var(--border); background: var(--bg2); color: var(--text); font-family: var(--fb); font-size: 0.88rem; transition: all .25s; outline: none; resize: none; width: 100%; }
+.fg input:focus, .fg textarea:focus { border-color: var(--border2); box-shadow: 0 0 0 3px var(--a08); }
+.form-submit { width: 100%; padding: 13px; border-radius: 11px; background: var(--live); color: var(--on-accent); font-size: 0.88rem; font-weight: 700; transition: all .25s var(--ease); display: flex; align-items: center; justify-content: center; gap: 8px; }
+.form-submit:hover { transform: translateY(-2px); box-shadow: 0 10px 28px var(--a35); }
+
+footer { background: var(--bg); border-top: 1px solid var(--border); padding: 40px 0; }
+.footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+.footer-logo { font-family: var(--fm); font-size: 0.9rem; color: var(--live); }
+.footer-copy { font-size: 0.78rem; color: var(--text3); }
+.footer-links { display: flex; gap: 18px; }
+.footer-links a { font-size: 0.78rem; color: var(--text3); transition: color .2s; }
+.footer-links a:hover { color: var(--live); }
+
+.back-top { position: fixed; bottom: 26px; right: 26px; z-index: 400; width: 40px; height: 40px; border-radius: 11px; background: var(--surface); border: 1px solid var(--border); color: var(--text2); display: flex; align-items: center; justify-content: center; font-size: 0.95rem; transition: all .25s var(--ease); opacity: 0; pointer-events: none; transform: translateY(8px); }
+.back-top.show { opacity: 1; pointer-events: all; transform: translateY(0); }
+.back-top:hover { background: var(--live); color: var(--on-accent); border-color: var(--live); }
+
+.mob-nav { position: fixed; inset: 0; z-index: 2000; background: rgba(8,11,15,0.98); backdrop-filter: blur(18px); display: none; flex-direction: column; align-items: center; justify-content: center; gap: 28px; }
+.mob-nav.open { display: flex; }
+.mob-nav a { font-family: var(--fh); font-size: 1.8rem; font-weight: 700; color: var(--text2); }
+.mob-close { position: absolute; top: 26px; right: 26px; font-size: 1.4rem; color: var(--text3); }
+
+.rv { opacity: 0; transform: translateY(24px); transition: opacity .6s var(--ease), transform .6s var(--ease); }
+.rv.on { opacity: 1; transform: none; }
+
+@media (max-width: 900px) {
+  .hero-inner { grid-template-columns: 1fr; gap: 36px; }
+  .bento { grid-template-columns: 1fr; }
+  .skills-layout { grid-template-columns: 1fr; }
+  .skills-sidebar { display: flex; overflow-x: auto; gap: 4px; border-right: none; border-bottom: 1px solid var(--border); }
+  .exp-item { grid-template-columns: 1fr; gap: 14px; padding-left: 26px; }
+  .proj-featured { grid-template-columns: 1fr; }
+  .stats-row { grid-template-columns: 1fr 1fr; }
+  .cred-grid, .gh-grid, .contact-wrap { grid-template-columns: 1fr; gap: 36px; }
+  .nav-links { display: none; }
+  .burger { display: flex; }
+  .form-row { grid-template-columns: 1fr; }
+  .sec { padding: 64px 0 88px; }
+  .bottom-nav { display: block; }
+}
+</style>
+</head>
+<body>
+
+<a href="#hero" class="skip-link">Skip to main content</a>
+
+<div id="loader">
+  <div class="loader-logo">$ init_core_engine --architect=shahnawaz</div>
+  <div class="loader-bar-wrap"><div class="loader-bar"></div></div>
+</div>
+
+<div class="bg-grid" aria-hidden="true"></div>
+<div class="cursor-dot" id="cDot"></div>
+<div class="cursor-ring" id="cRing"></div>
+<div class="scroll-progress" id="scrollProg"></div>
+<div id="toastStack"></div>
+
+<!-- Command Palette -->
+<div class="cmdk-overlay" id="cmdkOverlay" role="dialog" aria-modal="true" aria-label="Command Palette">
+  <div class="cmdk-box">
+    <div class="cmdk-input-row">
+      <iconify-icon icon="ph:magnifying-glass-bold"></iconify-icon>
+      <input id="cmdkInput" type="text" placeholder="Type a command or jump to section..." autocomplete="off"/>
+      <span class="cmdk-esc">ESC</span>
+    </div>
+    <div class="cmdk-list" id="cmdkList"></div>
+  </div>
+</div>
+
+<!-- Theme Engine Panel -->
+<div class="theme-overlay" id="themeOverlay"></div>
+<aside class="theme-panel" id="themePanel" aria-label="Appearance Engine">
+  <div class="tp-head">
+    <span class="tp-title">Design Engine</span>
+    <button class="tp-close" id="tpClose" aria-label="Close settings"><iconify-icon icon="ph:x-bold"></iconify-icon></button>
+  </div>
+  <div class="tp-label">Color Mode</div>
+  <div class="tp-modes" id="tpModes">
+    <button class="tp-mode" data-mode="light"><iconify-icon icon="ph:sun-bold"></iconify-icon>Light</button>
+    <button class="tp-mode" data-mode="dark"><iconify-icon icon="ph:moon-bold"></iconify-icon>Dark</button>
+    <button class="tp-mode" data-mode="system"><iconify-icon icon="ph:desktop-bold"></iconify-icon>System</button>
+  </div>
+  <div class="tp-label">Accent Token</div>
+  <div class="tp-accents" id="tpAccents">
+    <button class="tp-accent" data-accent="green" style="background:#34d399" aria-label="Emerald Green"></button>
+    <button class="tp-accent" data-accent="blue" style="background:#38bdf8" aria-label="Sky Blue"></button>
+    <button class="tp-accent" data-accent="purple" style="background:#a78bfa" aria-label="Violet"></button>
+    <button class="tp-accent" data-accent="amber" style="background:#f5a623" aria-label="Amber"></button>
+    <button class="tp-accent" data-accent="rose" style="background:#fb7185" aria-label="Rose"></button>
+  </div>
+  <div class="tp-label">Gradients</div>
+  <div class="tp-toggle-row">
+    <span>Enable Mesh Fill</span>
+    <div class="switch" id="gradientSwitch"></div>
+  </div>
+</aside>
+
+<!-- Top Floating Navigation -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo"><iconify-icon icon="mdi:server-network" width="18"></iconify-icon> SA.</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#ghstats">Metrics</a></li>
+      <li><a href="#certs">Certs</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="nav-icon-btn" id="cmdkBtn" title="Command Palette (Ctrl+K)"><iconify-icon icon="ph:magnifying-glass-bold"></iconify-icon></button>
+      <button class="nav-icon-btn" id="themeBtn" title="Appearance Settings"><iconify-icon icon="ph:palette-bold"></iconify-icon></button>
+      <a href="mailto:snawaza243@gmail.com" class="nav-hire"><span class="dot"></span>Hire Me</a>
+      <button class="burger" id="burgerBtn" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<!-- Native Mobile Bottom Dock -->
+<nav class="bottom-nav">
+  <div class="bn-inner">
+    <a href="#hero" class="bn-item" data-sec="hero"><iconify-icon icon="ph:house-bold"></iconify-icon><span>Home</span></a>
+    <a href="#projects" class="bn-item" data-sec="projects"><iconify-icon icon="ph:folder-bold"></iconify-icon><span>Projects</span></a>
+    <a href="#experience" class="bn-item" data-sec="experience"><iconify-icon icon="ph:briefcase-bold"></iconify-icon><span>Work</span></a>
+    <a href="#skills" class="bn-item" data-sec="skills"><iconify-icon icon="ph:code-bold"></iconify-icon><span>Skills</span></a>
+    <a href="#contact" class="bn-item" data-sec="contact"><iconify-icon icon="ph:envelope-simple-bold"></iconify-icon><span>Contact</span></a>
+    <button class="bn-item" id="bnSettings"><iconify-icon icon="ph:gear-six-bold"></iconify-icon><span>Settings</span></button>
+  </div>
+</nav>
+
+<!-- Fullscreen Mobile Overlay -->
+<div class="mob-nav" id="mobNav">
+  <button class="mob-close" id="mobClose">✕</button>
+  <a href="#about" class="mob-lnk">About</a>
+  <a href="#skills" class="mob-lnk">Skills</a>
+  <a href="#experience" class="mob-lnk">Experience</a>
+  <a href="#projects" class="mob-lnk">Projects</a>
+  <a href="#certs" class="mob-lnk">Certifications</a>
+  <a href="#contact" class="mob-lnk">Contact</a>
+</div>
+
+<!-- Hero Architecture Panel -->
+<section id="hero">
+  <div class="wrap">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-badge"><span class="ping"></span> Available for Backend & Full-Stack .NET Architecture Roles</div>
+        <h1 class="hero-name">Shahnawaz Alam</h1>
+        <div class="hero-role"><span id="typedEl"></span><span class="cursor-type"></span></div>
+        <p class="hero-desc">Sole Backend SPOC running high-throughput production microservices for enterprise HCM and fintech systems. Specialized in <strong>ASP.NET Core Web API, SQL Server, C#, and RBAC Architecture</strong>[cite: 1].</p>
+        <div class="hero-ctas">
+          <a href="#projects" class="btn-glow"><iconify-icon icon="ph:arrow-right-bold"></iconify-icon>Explore Architecture</a>
+          <a href="#contact" class="btn-outline"><iconify-icon icon="ph:paper-plane-tilt-bold"></iconify-icon>Get In Touch</a>
+          <a href="https://github.com/snawaza243" target="_blank" rel="noopener" class="btn-outline"><iconify-icon icon="mdi:github"></iconify-icon>GitHub Profile</a>
+        </div>
+        <div class="hero-metrics">
+          <div class="metric"><div class="metric-val">2+</div><div class="metric-lab">Years Exp[cite: 1]</div></div>
+          <div class="metric"><div class="metric-val">100+</div><div class="metric-lab">API Endpoints[cite: 1]</div></div>
+          <div class="metric"><div class="metric-val">20+</div><div class="metric-lab">Core Modules Shipped[cite: 1]</div></div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="status-panel">
+          <div class="sp-head">
+            <div class="sp-title"><iconify-icon icon="mdi:server" width="15"></iconify-icon> FFI-HCM-Gateway.prod</div>
+            <div class="sp-status"><span class="dot"></span>LIVE ARCHITECTURE[cite: 1]</div>
+          </div>
+          <div class="sp-body">
+            <div class="sp-row">
+              <div class="sp-cell"><div class="sp-cell-lab">Availability</div><div class="sp-cell-val g">99.99%</div></div>
+              <div class="sp-cell"><div class="sp-cell-lab">Latency</div><div class="sp-cell-val" id="latencyVal">24ms</div></div>
+              <div class="sp-cell"><div class="sp-cell-lab">Throughput</div><div class="sp-cell-val" id="reqVal">142 rps</div></div>
+            </div>
+            <div class="sp-graph">
+              <div class="sp-graph-lab"><span>Telemetry Telemetry Metrics</span><span>Realtime</span></div>
+              <svg id="sparkline" width="100%" height="46" viewBox="0 0 300 46" preserveAspectRatio="none">
+                <polyline id="sparkPoly" fill="none" stroke="var(--live)" stroke-width="2" points=""/>
+              </svg>
+            </div>
+            <div class="sp-log">
+              <div><span class="ok">✓</span> <span class="path">POST /api/v1/auth/jwt</span> — 200 · RBAC Validated[cite: 1]</div>
+              <div><span class="ok">✓</span> <span class="path">GET /api/v1/hcm/payroll</span> — 200 · Idempotent Key Cached[cite: 1]</div>
+              <div><span class="ok">✓</span> <span class="path">POST /gateway/ocelot/route</span> — 200 · 0.12ms proxy[cite: 1]</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Infinite Ticker Banner -->
+<div class="marquee-section">
+  <div class="marquee-track" id="marqueeTrack"></div>
+</div>
+
+<!-- About Bento Grid -->
+<section id="about" class="sec">
+  <div class="wrap">
+    <div class="rv">
+      <div class="eyebrow">01 · Strategic Mindset</div>
+      <h2 class="heading">Architecture-first thinking. <span class="gr">Production reality.</span></h2>
+    </div>
+    <div class="bento">
+      <div class="bento-card bc-story">
+        <div class="eyebrow" style="margin-bottom:16px">Engineering Philosophy[cite: 1]</div>
+        <div class="story-text">
+          <p>I believe backend engineering should be completely invisible to end users: APIs respond instantaneously, transactions maintain absolute consistency, and systems scale smoothly[cite: 1].</p>
+          <p>As the sole <strong>Backend SPOC</strong> for an enterprise HCM platform, I run a <strong>100+ RESTful API suite</strong> serving an engineering team of 7–9[cite: 1]. My work spans high-throughput microservices, strict security policies (JWT, RBAC), complex database schema design, and seamless legacy modernizations[cite: 1].</p>
+          <p>Whether migrating mission-critical legacy financial platforms or engineering distributed microservice gateways with Docker and Ocelot, I build backend infrastructure designed to endure production loads[cite: 1].</p>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div class="bento-card bc-accent rv">
+          <div class="bc-icon"><iconify-icon icon="mdi:sitemap"></iconify-icon></div>
+          <div class="bc-num">20+</div>
+          <div class="bc-num-label">Financial Modules Modernized[cite: 1]</div>
+          <div class="bc-tag-list"><span class="bc-tag">Finance</span><span class="bc-tag">Insurance</span><span class="bc-tag">NPS</span><span class="bc-tag">Mutual Funds</span><span class="bc-tag">Reconciliation</span></div>[cite: 1]
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+          <div class="bento-card rv">
+            <div class="bc-icon"><iconify-icon icon="mdi:shield-check"></iconify-icon></div>
+            <div class="bc-title">Zero-Trust Security[cite: 1]</div>
+            <div class="bc-desc">Granular JWT authentication, RBAC policy engines, and transactional idempotency[cite: 1].</div>
+          </div>
+          <div class="bento-card rv">
+            <div class="bc-icon"><iconify-icon icon="mdi:database-cog"></iconify-icon></div>
+            <div class="bc-title">Data Integrity</div>
+            <div class="bc-desc">Advanced SQL stored procedures, relational schema design, and execution optimizations[cite: 1].</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Interactive Skill Matrix -->
+<section id="skills" class="sec">
+  <div class="wrap">
+    <div class="rv">
+      <div class="eyebrow">02 · Technical Matrix</div>
+      <h2 class="heading">Enterprise stack. <span class="gr">Battle-tested tools.</span></h2>
+    </div>
+    <div class="skills-layout rv">
+      <div class="skills-sidebar" role="tablist">
+        <div class="skill-tab active" data-panel="p-backend" role="tab"><div class="tab-icon"><iconify-icon icon="mdi:server"></iconify-icon></div><span class="tab-name">Backend Architecture</span><span class="tab-count">6</span></div>
+        <div class="skill-tab" data-panel="p-db" role="tab"><div class="tab-icon"><iconify-icon icon="mdi:database"></iconify-icon></div><span class="tab-name">Databases & SQL</span><span class="tab-count">4</span></div>
+        <div class="skill-tab" data-panel="p-arch" role="tab"><div class="tab-icon"><iconify-icon icon="mdi:sitemap"></iconify-icon></div><span class="tab-name">Distributed Systems</span><span class="tab-count">5</span></div>
+        <div class="skill-tab" data-panel="p-lang" role="tab"><div class="tab-icon"><iconify-icon icon="mdi:code-json"></iconify-icon></div><span class="tab-name">Languages</span><span class="tab-count">5</span></div>
+        <div class="skill-tab" data-panel="p-tools" role="tab"><div class="tab-icon"><iconify-icon icon="mdi:dock-top"></iconify-icon></div><span class="tab-name">DevOps & Testing</span><span class="tab-count">5</span></div>
+      </div>
+      <div>
+        <!-- Panels -->
+        <div class="skills-panel active" id="p-backend">
+          <div class="sk-item">
+            <div class="sk-meta"><span class="sk-name">ASP.NET Core Web API[cite: 1]</span><span class="sk-pct">95%</span></div>
+            <div class="sk-bar"><div class="sk-fill" style="width:95%"></div></div>
+            <span class="sk-level expert">Expert</span>
+          </div>
+          <div class="sk-divider"></div>
+          <div class="sk-item">
+            <div class="sk-meta"><span class="sk-name">C# (.NET Core)[cite: 1]</span><span class="sk-pct">92%</span></div>
+            <div class="sk-bar"><div class="sk-fill" style="width:92%"></div></div>
+            <span class="sk-level expert">Expert</span>
+          </div>
+          <div class="sk-divider"></div>
+          <div class="sk-item">
+            <div class="sk-meta"><span class="sk-name">Entity Framework Core / ADO.NET[cite: 1]</span><span class="sk-pct">90%</span></div>
+            <div class="sk-bar"><div class="sk-fill" style="width:90%"></div></div>
+            <span class="sk-level expert">Expert</span>
+          </div>
+          <div class="sk-divider"></div>
+          <div class="sk-item">
+            <div class="sk-meta"><span class="sk-name">RESTful API Design[cite: 1]</span><span class="sk-pct">95%</span></div>
+            <div class="sk-bar"><div class="sk-fill" style="width:95%"></div></div>
+            <span class="sk-level expert">Expert</span>
+          </div>
+          <div class="sk-divider"></div>
+          <div class="sk-item">
+            <div class="sk-meta"><span class="sk-name">ASP.NET MVC & Web Forms[cite: 1]</span><span class="sk-pct">85%</span></div>
+            <div class="sk-bar"><div class="sk-fill" style="width:85%"></div></div>
+            <span class="sk-level advanced">Advanced</span>
+          </div>
+        </div>
+
+        <div class="skills-panel" id="p-db">
+          <div class="sk-item">
+            <div class="sk-meta"><span class="sk-name">Microsoft SQL Server[cite: 1]</span><span class="sk-pct">92%</span></div>
+            <div class="sk-bar"><div class="sk-fill" style="width:92%"></div></div>
+            <span class="sk-level expert">Expert</span>
+          </div>
+          <div class="sk-divider"></div>
+          <div class="sk-item">
+            <div class="sk-meta"><span class="sk-name">Stored Procedures & Functions[cite: 1]</span><span class="sk-pct">94%</span></div>
+            <div class="sk-bar"><div class="sk-fill" style="width:94%"></div></div>
+            <span class="sk-level expert">Expert</span>
+          </div>
+          <div class="sk-divider"></div>
+          <div class="sk-item">
+            <div class="sk-meta"><span class="sk-name">Oracle SQL[cite: 1]</span><span class="sk-pct">85%</span></div>
+            <div class="sk-bar"><div class="sk-fill" style="width:85%"></div></div>
+            <span class="sk-level advanced">Advanced</span>
+          </div>
+          <div class="sk-divider"></div>
+          <div class="sk-item">
+            <div class="sk-meta"><span class="sk-name">MySQL[cite: 1]</span><span class="sk-pct">80%</span></div>
+            <div class="sk-bar"><div class="sk-fill" style="width:80%"></div></div>
+            <span class="sk-level advanced">Advanced</span>
+          </div>
+        </div>
+
+        <div class="skills-panel" id="p-arch">
+          <div class="sk-item">
+            <div class="sk-meta"><span class="sk-name">Microservices Architecture[cite: 1]</span><span class="sk-pct">88%</span></div>
+            <div class="sk-bar"><div class="sk-fill" style="width:88%"></div></div>
+            <span class="sk-level advanced">Advanced</span>
+          </div>
+          <div class="sk-divider"></div>
+          <div class="sk-item">
+            <div class="sk-meta"><span class="sk-name">Ocelot API Gateway[cite: 1]</span><span class="sk-pct">88%</span></div>
+            <div class="sk-bar"><div class="sk-fill" style="width:88%"></div></div>
+            <span class="sk-level advanced">Advanced</span>
+          </div>
+          <div class="sk-divider"></div>
+          <div class="sk-item">
+            <div class="sk-meta"><span class="sk-name">JWT & RBAC Security Engines[cite: 1]</span><span class="sk-pct">92%</span></div>
+            <div class="sk-bar"><div class="sk-fill" style="width:92%"></div></div>
+            <span class="sk-level expert">Expert</span>
+          </div>
+          <div class="sk-divider"></div>
+          <div class="sk-item">
+            <div class="sk-meta"><span class="sk-name">SOLID & Clean Architecture[cite: 1]</span><span class="sk-pct">94%</span></div>
+            <div class="sk-bar"><div class="sk-fill" style="width:94%"></div></div>
+            <span class="sk-level expert">Expert</span>
+          </div>
+        </div>
+
+        <div class="skills-panel" id="p-lang">
+          <div class="sk-item">
+            <div class="sk-meta"><span class="sk-name">C#[cite: 1]</span><span class="sk-pct">94%</span></div>
+            <div class="sk-bar"><div class="sk-fill" style="width:94%"></div></div>
+            <span class="sk-level expert">Expert</span>
+          </div>
+          <div class="sk-divider"></div>
+          <div class="sk-item">
+            <div class="sk-meta"><span class="sk-name">JavaScript (ES6+) / React.js[cite: 1]</span><span class="sk-pct">82%</span></div>
+            <div class="sk-bar"><div class="sk-fill" style="width:82%"></div></div>
+            <span class="sk-level advanced">Advanced</span>
+          </div>
+          <div class="sk-divider"></div>
+          <div class="sk-item">
+            <div class="sk-meta"><span class="sk-name">C++[cite: 1]</span><span class="sk-pct">75%</span></div>
+            <div class="sk-bar"><div class="sk-fill" style="width:75%"></div></div>
+            <span class="sk-level proficient">Proficient</span>
+          </div>
+          <div class="sk-divider"></div>
+          <div class="sk-item">
+            <div class="sk-meta"><span class="sk-name">Python / Java[cite: 1]</span><span class="sk-pct">78%</span></div>
+            <div class="sk-bar"><div class="sk-fill" style="width:78%"></div></div>
+            <span class="sk-level proficient">Proficient</span>
+          </div>
+        </div>
+
+        <div class="skills-panel" id="p-tools">
+          <div class="sk-item">
+            <div class="sk-meta"><span class="sk-name">Docker Containerization[cite: 1]</span><span class="sk-pct">85%</span></div>
+            <div class="sk-bar"><div class="sk-fill" style="width:85%"></div></div>
+            <span class="sk-level advanced">Advanced</span>
+          </div>
+          <div class="sk-divider"></div>
+          <div class="sk-item">
+            <div class="sk-meta"><span class="sk-name">xUnit Testing & Validation[cite: 1]</span><span class="sk-pct">88%</span></div>
+            <div class="sk-bar"><div class="sk-fill" style="width:88%"></div></div>
+            <span class="sk-level advanced">Advanced</span>
+          </div>
+          <div class="sk-divider"></div>
+          <div class="sk-item">
+            <div class="sk-meta"><span class="sk-name">Git / GitHub / Azure DevOps[cite: 1]</span><span class="sk-pct">90%</span></div>
+            <div class="sk-bar"><div class="sk-fill" style="width:90%"></div></div>
+            <span class="sk-level expert">Expert</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Career Experience Timeline -->
+<section id="experience" class="sec">
+  <div class="wrap">
+    <div class="rv">
+      <div class="eyebrow">03 · Career Track</div>
+      <h2 class="heading">Engineering <span class="gr">Impact & Leadership</span></h2>
+    </div>
+    <div class="exp-list">
+      
+      <!-- Blu Parrot - FFI HCM -->
+      <div class="exp-item rv">
+        <div>
+          <div class="exp-date">NOV 2025 – PRESENT[cite: 1]</div>
+          <div class="exp-company">Blu Parrot Ventures[cite: 1]</div>
+          <div class="exp-loc"><iconify-icon icon="ph:map-pin-bold"></iconify-icon> Gurugram, India[cite: 1]</div>
+        </div>
+        <div>
+          <div class="exp-role">
+            Software Engineer — FFI HCM Platform[cite: 1]
+            <span class="exp-role-badge">Sole Backend SPOC[cite: 1]</span>
+          </div>
+          <div class="impact-list">
+            <div class="impact-item"><iconify-icon icon="ph:check-circle-bold"></iconify-icon><span>Served as the <strong>Sole Backend SPOC</strong> for a <strong>100+ endpoint API suite</strong> supporting an engineering team of 7–9[cite: 1].</span></div>
+            <div class="impact-item"><iconify-icon icon="ph:check-circle-bold"></iconify-icon><span>Architected zero-trust REST APIs powered by <strong>JWT authentication, RBAC authorization, and idempotency controls</strong>[cite: 1].</span></div>
+            <div class="impact-item"><iconify-icon icon="ph:check-circle-bold"></iconify-icon><span>Designed SQL Server database schemas, indexing strategies, and relational integrity rules for core HR workflows[cite: 1].</span></div>
+          </div>
+          <div class="tech-stack">
+            <span class="tech-pill">ASP.NET Core Web API[cite: 1]</span>
+            <span class="tech-pill">SQL Server[cite: 1]</span>
+            <span class="tech-pill">JWT[cite: 1]</span>
+            <span class="tech-pill">RBAC[cite: 1]</span>
+            <span class="tech-pill">REST APIs[cite: 1]</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Blu Parrot - Bajaj Wealthmaker -->
+      <div class="exp-item rv">
+        <div>
+          <div class="exp-date">AUG 2024 – OCT 2025[cite: 1]</div>
+          <div class="exp-company">Blu Parrot Ventures[cite: 1]</div>
+          <div class="exp-loc"><iconify-icon icon="ph:map-pin-bold"></iconify-icon> Client: Bajaj Corporation[cite: 1]</div>
+        </div>
+        <div>
+          <div class="exp-role">
+            Software Engineer — Wealthmaker Modernization[cite: 1]
+            <span class="exp-role-badge">Lead Migration Engineer[cite: 1]</span>
+          </div>
+          <div class="impact-list">
+            <div class="impact-item"><iconify-icon icon="ph:check-circle-bold"></iconify-icon><span>Led legacy <strong>VB6 to .NET migration</strong> leading a 5-engineer team to modernize enterprise financial infrastructure[cite: 1].</span></div>
+            <div class="impact-item"><iconify-icon icon="ph:check-circle-bold"></iconify-icon><span>Shipped <strong>20+ business-critical modules</strong> including Finance, Insurance, Mutual Funds, NPS, Reporting, and Reconciliation[cite: 1].</span></div>
+            <div class="impact-item"><iconify-icon icon="ph:check-circle-bold"></iconify-icon><span>Successfully deployed platform across <strong>7–8 operational branches</strong> within a 1-year development timeline[cite: 1].</span></div>
+          </div>
+          <div class="tech-stack">
+            <span class="tech-pill">ASP.NET Web Forms[cite: 1]</span>
+            <span class="tech-pill">ASP.NET MVC[cite: 1]</span>
+            <span class="tech-pill">Oracle SQL[cite: 1]</span>
+            <span class="tech-pill">Stored Procedures[cite: 1]</span>
+            <span class="tech-pill">jQuery[cite: 1]</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Vienna Advantage -->
+      <div class="exp-item rv">
+        <div>
+          <div class="exp-date">FEB 2024 – APR 2024[cite: 1]</div>
+          <div class="exp-company">Vienna Advantage[cite: 1]</div>
+          <div class="exp-loc"><iconify-icon icon="ph:map-pin-bold"></iconify-icon> Mohali, India[cite: 1]</div>
+        </div>
+        <div>
+          <div class="exp-role">Software Developer Intern[cite: 1]</div>
+          <div class="impact-list">
+            <div class="impact-item"><iconify-icon icon="ph:check-circle-bold"></iconify-icon><span>Engineered core application components for the <strong>AD (Application Dictionary) module</strong> in ERP framework[cite: 1].</span></div>
+            <div class="impact-item"><iconify-icon icon="ph:check-circle-bold"></iconify-icon><span>Implemented clean C# OOP design patterns and executed database queries for high-value enterprise modules[cite: 1].</span></div>
+          </div>
+          <div class="tech-stack">
+            <span class="tech-pill">C#[cite: 1]</span>
+            <span class="tech-pill">SQL[cite: 1]</span>
+            <span class="tech-pill">JavaScript[cite: 1]</span>
+            <span class="tech-pill">ERP Framework[cite: 1]</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Deep Project Breakdown -->
+<section id="projects" class="sec">
+  <div class="wrap">
+    <div class="rv">
+      <div class="eyebrow">04 · Engineering Case Studies</div>
+      <h2 class="heading">Production Systems & <span class="gr">Architectural Deep Dives</span></h2>
+    </div>
+
+    <div class="proj-toolbar rv">
+      <div class="proj-search">
+        <iconify-icon icon="ph:magnifying-glass-bold"></iconify-icon>
+        <input type="text" id="projSearchInput" placeholder="Search stack, keywords, architectures..."/>
+      </div>
+      <div class="proj-filters" id="projFilters">
+        <button class="pf-chip active" data-filter="all">All Systems</button>
+        <button class="pf-chip" data-filter="microservices">Microservices</button>
+        <button class="pf-chip" data-filter="enterprise">Enterprise HCM</button>
+        <button class="pf-chip" data-filter="dotnet">.NET Core</button>
+      </div>
+    </div>
+
+    <div class="proj-featured">
+      
+      <!-- Spectrum -->
+      <div class="proj-card" data-tags="microservices dotnet docker ocelot">
+        <div class="proj-idx">ARCHITECTURE STUDY 01 · MICROSERVICES[cite: 1]</div>
+        <div class="proj-heading">Spectrum — Distributed Microservices Platform[cite: 1]</div>
+        <div class="proj-type">High-Performance Backend Infrastructure[cite: 1]</div>
+        
+        <div class="proj-problem">
+          <div class="prob-label">Architectural Challenge[cite: 1]</div>
+          <div class="prob-text">Designing a decoupled, containerized microservices ecosystem capable of routing dynamic traffic securely with strict centralized authentication and minimal gateway latency[cite: 1].</div>
+        </div>
+
+        <div class="feat-list">
+          <div class="feat-item"><iconify-icon icon="ph:check-bold" class="feat-check"></iconify-icon><span><strong>Ocelot API Gateway:</strong> Centralized dynamic request routing, rate limiting, and header propagation[cite: 1].</span></div>
+          <div class="feat-item"><iconify-icon icon="ph:check-bold" class="feat-check"></iconify-icon><span><strong>Zero-Trust Security:</strong> Granular JWT token verification with customized Role-Based Access Control (RBAC)[cite: 1].</span></div>
+          <div class="feat-item"><iconify-icon icon="ph:check-bold" class="feat-check"></iconify-icon><span><strong>Containerized Pipeline:</strong> Isolated Docker instances validated via xUnit integration tests[cite: 1].</span></div>
+        </div>
+
+        <div class="proj-stack">
+          <span class="stack-chip">.NET Core[cite: 1]</span>
+          <span class="stack-chip">Docker[cite: 1]</span>
+          <span class="stack-chip">Ocelot Gateway[cite: 1]</span>
+          <span class="stack-chip">JWT / RBAC[cite: 1]</span>
+          <span class="stack-chip">xUnit[cite: 1]</span>
+        </div>
+
+        <div class="proj-outcome">
+          <iconify-icon icon="ph:trend-up-bold"></iconify-icon> Isolated service topology achieved sub-30ms internal service routing[cite: 1].
+        </div>
+
+        <div class="proj-actions">
+          <a href="https://github.com/snawaza243" target="_blank" rel="noopener" class="proj-btn"><iconify-icon icon="mdi:github"></iconify-icon> Repository</a>
+        </div>
+      </div>
+
+      <!-- FFI HCM -->
+      <div class="proj-card" data-tags="enterprise hcm dotnet sql">
+        <div class="proj-idx">ENTERPRISE SYSTEM 02 · PRODUCTION HCM[cite: 1]</div>
+        <div class="proj-heading">FFI HCM Platform — Core API Suite[cite: 1]</div>
+        <div class="proj-type">Enterprise Human Capital Management Backend[cite: 1]</div>
+        
+        <div class="proj-problem">
+          <div class="prob-label">Architectural Challenge[cite: 1]</div>
+          <div class="prob-text">Owning backend operations solo for a complex HRMS suite serving 100+ API endpoints without compromise on transactional execution speed or data safety[cite: 1].</div>
+        </div>
+
+        <div class="feat-list">
+          <div class="feat-item"><iconify-icon icon="ph:check-bold" class="feat-check"></iconify-icon><span><strong>100+ API Endpoints:</strong> Built and maintained backend service contracts powering full HR lifecycle[cite: 1].</span></div>
+          <div class="feat-item"><iconify-icon icon="ph:check-bold" class="feat-check"></iconify-icon><span><strong>Database Engineering:</strong> Designed relational SQL Server tables, stored procedures, and execution plans[cite: 1].</span></div>
+          <div class="feat-item"><iconify-icon icon="ph:check-bold" class="feat-check"></iconify-icon><span><strong>Transaction Guarding:</strong> Custom idempotency keys protecting payroll processing endpoints[cite: 1].</span></div>
+        </div>
+
+        <div class="proj-stack">
+          <span class="stack-chip">ASP.NET Core Web API[cite: 1]</span>
+          <span class="stack-chip">SQL Server[cite: 1]</span>
+          <span class="stack-chip">JWT Auth[cite: 1]</span>
+          <span class="stack-chip">RBAC[cite: 1]</span>
+        </div>
+
+        <div class="proj-outcome">
+          <iconify-icon icon="ph:trend-up-bold"></iconify-icon> Zero downtime across core HR operations serving multi-tenant teams[cite: 1].
+        </div>
+
+        <div class="proj-actions">
+          <span class="proj-btn"><iconify-icon icon="ph:lock-key-bold"></iconify-icon> Enterprise Confidential[cite: 1]</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Impact Metrics Strip -->
+<section id="stats">
+  <div class="wrap">
+    <div class="stats-row">
+      <div class="stat-box">
+        <div class="stat-val">100+</div>
+        <div class="stat-name">Production Endpoints[cite: 1]</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-val">20+</div>
+        <div class="stat-name">Financial Modules[cite: 1]</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-val">8</div>
+        <div class="stat-name">Branches Deployed[cite: 1]</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-val">8.31</div>
+        <div class="stat-name">B.Tech CGPA[cite: 1]</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GitHub Dashboard Section -->
+<section id="ghstats" class="sec">
+  <div class="wrap">
+    <div class="rv">
+      <div class="eyebrow">05 · Open Source Analytics</div>
+      <h2 class="heading">GitHub Live <span class="gr">Telemetry & Activity</span>[cite: 1]</h2>
+    </div>
+    <div class="gh-grid rv">
+      <div class="gh-card gh-full">
+        <img src="https://github-readme-activity-graph.vercel.app/graph?username=snawaza243&theme=react-dark&hide_border=true&bg_color=0e131a&color=34d399&line=34d399&point=ffffff" alt="GitHub Contribution Graph" loading="lazy"/>[cite: 1]
+      </div>
+      <div class="gh-card">
+        <img src="https://streak-stats.demolab.com?user=snawaza243&theme=radical&hide_border=true&background=0e131a&ring=34d399&fire=34d399&currStreakLabel=34d399" alt="GitHub Streak Stats" loading="lazy"/>[cite: 1]
+      </div>
+      <div class="gh-card">
+        <img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=snawaza243&theme=radical" alt="GitHub Profile Summary" loading="lazy"/>[cite: 1]
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Education & Certifications -->
+<section id="certs" class="sec">
+  <div class="wrap">
+    <div class="rv">
+      <div class="eyebrow">06 · Credentials</div>
+      <h2 class="heading">Academic Degree & <span class="gr">Certifications</span>[cite: 1]</h2>
+    </div>
+    
+    <div class="cred-grid">
+      <div class="edu-card rv">
+        <div class="edu-deg">Bachelor of Technology (B.Tech)[cite: 1]</div>
+        <div class="edu-school">Computer Science & Engineering · MM University[cite: 1]</div>
+        <div class="edu-meta">
+          <span>Jul 2020 – May 2024[cite: 1]</span>
+          <span class="g">CGPA: 8.31 / 10.0[cite: 1]</span>
+        </div>
+      </div>
+
+      <div class="certs-grid rv">
+        <div class="cert-card">
+          <div class="cert-ico"><iconify-icon icon="simple-icons:oracle"></iconify-icon></div>
+          <div><div class="cert-name">Oracle SQL Certification[cite: 1]</div><div class="cert-by">Udemy[cite: 1]</div></div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-ico"><iconify-icon icon="simple-icons:servicenow"></iconify-icon></div>
+          <div><div class="cert-name">ServiceNow CSA & CAD[cite: 1]</div><div class="cert-by">ServiceNow Certified[cite: 1]</div></div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-ico"><iconify-icon icon="simple-icons:googlecloud"></iconify-icon></div>
+          <div><div class="cert-name">Cloud Digital Leader[cite: 1]</div><div class="cert-by">Google Cloud[cite: 1]</div></div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-ico"><iconify-icon icon="simple-icons:openjdk"></iconify-icon></div>
+          <div><div class="cert-name">Java J2EE Certified[cite: 1]</div><div class="cert-by">Wipro TalentNext[cite: 1]</div></div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-ico"><iconify-icon icon="simple-icons:hackerrank"></iconify-icon></div>
+          <div><div class="cert-name">CSS & JavaScript Certified[cite: 1]</div><div class="cert-by">HackerRank[cite: 1]</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Direct Contact Section -->
+<section id="contact" class="sec">
+  <div class="wrap">
+    <div class="contact-wrap">
+      <div class="rv">
+        <div class="eyebrow">07 · Direct Channel</div>
+        <h2 class="contact-tagline">Let's build scalable <span class="gr">backend infrastructure.</span>[cite: 1]</h2>
+        <p class="contact-note">Currently open to Principal / Staff / Senior .NET Backend roles and Full-Stack Architect opportunities in Gurugram, NCR, or Remote[cite: 1].</p>
+        
+        <div class="contact-links">
+          <a href="mailto:snawaza243@gmail.com" class="c-link">
+            <div class="c-link-icon"><iconify-icon icon="ph:envelope-simple-bold"></iconify-icon></div>
+            <div>
+              <div class="c-link-label">Direct Email[cite: 1]</div>
+              <div class="c-link-val">snawaza243@gmail.com[cite: 1]</div>
+            </div>
+          </a>
+          <a href="https://linkedin.com/in/snawaza243" target="_blank" rel="noopener" class="c-link">
+            <div class="c-link-icon"><iconify-icon icon="mdi:linkedin"></iconify-icon></div>
+            <div>
+              <div class="c-link-label">Professional Profile[cite: 1]</div>
+              <div class="c-link-val">linkedin.com/in/snawaza243[cite: 1]</div>
+            </div>
+          </a>
+          <a href="https://github.com/snawaza243" target="_blank" rel="noopener" class="c-link">
+            <div class="c-link-icon"><iconify-icon icon="mdi:github"></iconify-icon></div>
+            <div>
+              <div class="c-link-label">Source Repositories[cite: 1]</div>
+              <div class="c-link-val">github.com/snawaza243[cite: 1]</div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="form-box rv">
+        <form id="contactForm" onsubmit="event.preventDefault(); window.location.href='mailto:snawaza243@gmail.com';">
+          <div class="form-row">
+            <div class="fg">
+              <label>Your Name</label>
+              <input type="text" required placeholder="e.g. Alex Mercer"/>
+            </div>
+            <div class="fg">
+              <label>Your Email</label>
+              <input type="email" required placeholder="alex@company.com"/>
+            </div>
+          </div>
+          <div class="fg">
+            <label>Subject</label>
+            <input type="text" required placeholder=".NET Backend Engineering Opportunity"/>
+          </div>
+          <div class="fg">
+            <label>Message</label>
+            <textarea required placeholder="Discussing backend architecture, system design, or roles..."></textarea>
+          </div>
+          <button type="submit" class="form-submit">
+            <iconify-icon icon="ph:paper-plane-tilt-bold"></iconify-icon> Send Direct Message
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="wrap">
+    <div class="footer-inner">
+      <div class="footer-logo">SA. Architect Engine v3.0</div>
+      <div class="footer-copy">© 2026 Shahnawaz Alam. Built with pure HTML/CSS/JS[cite: 1].</div>
+      <div class="footer-links">
+        <a href="https://github.com/snawaza243" target="_blank" rel="noopener">GitHub[cite: 1]</a>
+        <a href="https://linkedin.com/in/snawaza243" target="_blank" rel="noopener">LinkedIn[cite: 1]</a>
+        <a href="mailto:snawaza243@gmail.com">Email[cite: 1]</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<button class="back-top" id="backTopBtn" aria-label="Back to top"><iconify-icon icon="ph:arrow-up-bold"></iconify-icon></button>
+
+<!-- JavaScript Core Engine -->
+<script>
+// Loader Controller
+window.addEventListener('load', () => {
+  const loader = document.getElementById('loader');
+  setTimeout(() => { loader.classList.add('done'); }, 600);
+});
+
+// Custom Precision Cursor
+const cDot = document.getElementById('cDot');
+const cRing = document.getElementById('cRing');
+window.addEventListener('mousemove', (e) => {
+  cDot.style.left = e.clientX + 'px';
+  cDot.style.top = e.clientY + 'px';
+  cRing.style.left = e.clientX + 'px';
+  cRing.style.top = e.clientY + 'px';
+});
+
+document.querySelectorAll('a, button, input, .skill-tab, .proj-card').forEach(el => {
+  el.addEventListener('mouseenter', () => cRing.classList.add('hover'));
+  el.addEventListener('mouseleave', () => cRing.classList.remove('hover'));
+});
+
+// Scroll Progress
+window.addEventListener('scroll', () => {
+  const winScroll = document.documentElement.scrollTop;
+  const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  const scrolled = (winScroll / height) * 100;
+  document.getElementById('scrollProg').style.width = scrolled + '%';
+
+  // Navigation scroll state
+  const nav = document.getElementById('nav');
+  if (winScroll > 40) nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
+
+  // Back to top button
+  const backTop = document.getElementById('backTopBtn');
+  if (winScroll > 400) backTop.classList.add('show');
+  else backTop.classList.remove('show');
+});
+
+document.getElementById('backTopBtn').addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// Typing Text Array
+const roles = [
+  "Sole Backend SPOC — FFI HCM Platform[cite: 1]",
+  "ASP.NET Core & C# Architect[cite: 1]",
+  "Legacy Modernization Lead (VB6 → .NET)[cite: 1]",
+  "Microservices & Ocelot Gateway Specialist[cite: 1]"
+];
+let rIdx = 0, cIdx = 0, isDeleting = false;
+function typeEffect() {
+  const current = roles[rIdx];
+  const el = document.getElementById('typedEl');
+  if (isDeleting) {
+    el.textContent = current.substring(0, cIdx - 1);
+    cIdx--;
+  } else {
+    el.textContent = current.substring(0, cIdx + 1);
+    cIdx++;
+  }
+  let speed = isDeleting ? 30 : 60;
+  if (!isDeleting && cIdx === current.length) {
+    speed = 2200;
+    isDeleting = true;
+  } else if (isDeleting && cIdx === 0) {
+    isDeleting = false;
+    rIdx = (rIdx + 1) % roles.length;
+    speed = 400;
+  }
+  setTimeout(typeEffect, speed);
+}
+typeEffect();
+
+// Live Telemetry Sparkline Simulator
+const sparkPoly = document.getElementById('sparkPoly');
+let pts = Array.from({length: 25}, () => Math.floor(Math.random() * 25) + 10);
+function renderSpark() {
+  const width = 300, height = 46;
+  const step = width / (pts.length - 1);
+  const formatted = pts.map((val, idx) => `${idx * step},${height - val}`).join(' ');
+  sparkPoly.setAttribute('points', formatted);
+}
+setInterval(() => {
+  pts.shift();
+  pts.push(Math.floor(Math.random() * 28) + 8);
+  renderSpark();
+  document.getElementById('latencyVal').textContent = (Math.floor(Math.random() * 8) + 20) + 'ms';
+  document.getElementById('reqVal').textContent = (Math.floor(Math.random() * 30) + 130) + ' rps';
+}, 1200);
+renderSpark();
+
+// Marquee Tech Ticker Items
+const techItems = [
+  "C# .NET Core[cite: 1]", "ASP.NET Web API[cite: 1]", "SQL Server[cite: 1]", "Ocelot Gateway[cite: 1]",
+  "Microservices[cite: 1]", "Docker Containerization[cite: 1]", "JWT Auth[cite: 1]", "RBAC Security[cite: 1]",
+  "Oracle SQL[cite: 1]", "xUnit Testing[cite: 1]", "Clean Architecture[cite: 1]", "RESTful APIs[cite: 1]"
+];
+const track = document.getElementById('marqueeTrack');
+const fullStack = [...techItems, ...techItems, ...techItems];
+track.innerHTML = fullStack.map(t => `<div class="m-item hot"><iconify-icon icon="ph:cpu-bold"></iconify-icon> ${t}</div>`).join('');
+
+// Skill Tabs Switcher
+document.querySelectorAll('.skill-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.skill-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.skills-panel').forEach(p => p.classList.remove('active'));
+    tab.classList.add('active');
+    const pId = tab.getAttribute('data-panel');
+    document.getElementById(pId).classList.add('active');
+  });
+});
+
+// Project Filtering & Search
+const projCards = document.querySelectorAll('.proj-card');
+const filterChips = document.querySelectorAll('.pf-chip');
+const projInput = document.getElementById('projSearchInput');
+
+function filterProjects() {
+  const query = projInput.value.toLowerCase();
+  const activeChip = document.querySelector('.pf-chip.active').getAttribute('data-filter');
+
+  projCards.forEach(card => {
+    const text = card.textContent.toLowerCase();
+    const tags = card.getAttribute('data-tags');
+    const matchesQuery = text.includes(query);
+    const matchesFilter = activeChip === 'all' || tags.includes(activeChip);
+
+    if (matchesQuery && matchesFilter) {
+      card.classList.remove('filtered-out');
+    } else {
+      card.classList.add('filtered-out');
+    }
+  });
+}
+
+filterChips.forEach(chip => {
+  chip.addEventListener('click', () => {
+    filterChips.forEach(c => c.classList.remove('active'));
+    chip.classList.add('active');
+    filterProjects();
+  });
+});
+projInput.addEventListener('input', filterProjects);
+
+// Appearance Theme Panel Engine
+const themeBtn = document.getElementById('themeBtn');
+const tpClose = document.getElementById('tpClose');
+const themePanel = document.getElementById('themePanel');
+const themeOverlay = document.getElementById('themeOverlay');
+const bnSettings = document.getElementById('bnSettings');
+
+function toggleThemePanel() {
+  themePanel.classList.toggle('open');
+  themeOverlay.classList.toggle('open');
+}
+themeBtn.addEventListener('click', toggleThemePanel);
+tpClose.addEventListener('click', toggleThemePanel);
+themeOverlay.addEventListener('click', toggleThemePanel);
+if(bnSettings) bnSettings.addEventListener('click', toggleThemePanel);
+
+// Modes
+document.querySelectorAll('.tp-mode').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const mode = btn.getAttribute('data-mode');
+    document.documentElement.setAttribute('data-theme', mode);
+    document.querySelectorAll('.tp-mode').forEach(m => m.classList.remove('active'));
+    btn.classList.add('active');
+    saveThemeConfig();
+  });
+});
+
+// Accents
+document.querySelectorAll('.tp-accent').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const accent = btn.getAttribute('data-accent');
+    document.documentElement.setAttribute('data-accent', accent);
+    document.querySelectorAll('.tp-accent').forEach(a => a.classList.remove('active'));
+    btn.classList.add('active');
+    saveThemeConfig();
+  });
+});
+
+// Gradient Switch
+const gradientSwitch = document.getElementById('gradientSwitch');
+gradientSwitch.addEventListener('click', () => {
+  gradientSwitch.classList.toggle('on');
+  const isOn = gradientSwitch.classList.contains('on');
+  if (isOn) document.documentElement.setAttribute('data-gradient', 'on');
+  else document.documentElement.removeAttribute('data-gradient');
+  saveThemeConfig();
+});
+
+function saveThemeConfig() {
+  const config = {
+    mode: document.documentElement.getAttribute('data-theme') || 'dark',
+    accent: document.documentElement.getAttribute('data-accent') || 'green',
+    gradient: document.documentElement.hasAttribute('data-gradient')
+  };
+  localStorage.setItem('sa_system_theme', JSON.stringify(config));
+}
+
+// Command Palette (CMDK) Engine
+const cmdkOverlay = document.getElementById('cmdkOverlay');
+const cmdkBtn = document.getElementById('cmdkBtn');
+const cmdkInput = document.getElementById('cmdkInput');
+const cmdkList = document.getElementById('cmdkList');
+
+const cmdkItems = [
+  { label: 'Jump to Hero', action: () => window.location.href = '#hero', icon: 'ph:house-bold' },
+  { label: 'Jump to About Story', action: () => window.location.href = '#about', icon: 'ph:user-bold' },
+  { label: 'View Skills Matrix', action: () => window.location.href = '#skills', icon: 'ph:code-bold' },
+  { label: 'View Career History', action: () => window.location.href = '#experience', icon: 'ph:briefcase-bold' },
+  { label: 'Explore Projects', action: () => window.location.href = '#projects', icon: 'ph:folder-bold' },
+  { label: 'View GitHub Telemetry', action: () => window.location.href = '#ghstats', icon: 'ph:chart-line-up-bold' },
+  { label: 'View Certifications', action: () => window.location.href = '#certs', icon: 'ph:certificate-bold' },
+  { label: 'Contact Shahnawaz', action: () => window.location.href = '#contact', icon: 'ph:envelope-simple-bold' },
+  { label: 'Toggle Accent Settings', action: () => toggleThemePanel(), icon: 'ph:palette-bold' }
+];
+
+function renderCmdk(items) {
+  cmdkList.innerHTML = items.map((item, idx) => `
+    <div class="cmdk-item ${idx === 0 ? 'active' : ''}" data-idx="${idx}">
+      <iconify-icon icon="${item.icon}"></iconify-icon>
+      <span>${item.label}</span>
+    </div>
+  `).join('');
+
+  document.querySelectorAll('.cmdk-item').forEach((el, i) => {
+    el.addEventListener('click', () => {
+      items[i].action();
+      cmdkOverlay.classList.remove('open');
+    });
+  });
+}
+
+function openCmdk() {
+  cmdkOverlay.classList.add('open');
+  cmdkInput.value = '';
+  renderCmdk(cmdkItems);
+  setTimeout(() => cmdkInput.focus(), 50);
+}
+
+cmdkBtn.addEventListener('click', openCmdk);
+window.addEventListener('keydown', (e) => {
+  if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+    e.preventDefault();
+    openCmdk();
+  }
+  if (e.key === 'Escape' && cmdkOverlay.classList.contains('open')) {
+    cmdkOverlay.classList.remove('open');
+  }
+});
+
+cmdkInput.addEventListener('input', () => {
+  const q = cmdkInput.value.toLowerCase();
+  const filtered = cmdkItems.filter(item => item.label.toLowerCase().includes(q));
+  renderCmdk(filtered);
+});
+
+// Mobile Burger Navigation
+const burgerBtn = document.getElementById('burgerBtn');
+const mobNav = document.getElementById('mobNav');
+const mobClose = document.getElementById('mobClose');
+
+burgerBtn.addEventListener('click', () => mobNav.classList.add('open'));
+mobClose.addEventListener('click', () => mobNav.classList.remove('open'));
+document.querySelectorAll('.mob-lnk').forEach(link => {
+  link.addEventListener('click', () => mobNav.classList.remove('open'));
+});
+
+// Scroll Reveal Observer
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('on');
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.rv').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
